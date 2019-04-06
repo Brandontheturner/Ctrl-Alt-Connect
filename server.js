@@ -27,7 +27,6 @@ mongoose
   .catch(err => console.log(err))
 
 // Connect route files to server
-
 app.use('/api/users', users)
 app.use('/api/profile', profile)
 app.use('/api/posts', posts)
