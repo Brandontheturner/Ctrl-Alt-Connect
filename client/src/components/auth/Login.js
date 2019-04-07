@@ -33,9 +33,11 @@ class Login extends Component {
     const { errors } = this.state
     return (
       <Container text>
-        <Header textAlign="center">
-          <h1>Login</h1>
-          <p>Sign in your DevConnector account</p>
+        <Header as="h1" textAlign="center">
+          Login
+          <Header.Subheader>
+            Sign in to your DevConnector account
+          </Header.Subheader>
         </Header>
         <Form onSubmit={this.handleSubmit} error noValidate>
           <FormTextField
