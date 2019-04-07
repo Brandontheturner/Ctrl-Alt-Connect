@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { registerUser } from '../../actions/authActions'
 import { Button, Form, Container, Message, Header } from 'semantic-ui-react'
 import db from '../../api/db'
 
@@ -15,9 +17,10 @@ class Login extends Component {
   handleSubmit = () => {
     const { name, email, password, password2 } = this.state
     const newUser = { name, email, password, password2 }
-    db.post('/api/users/register', newUser)
-      .then(res => console.log(res.data))
-      .catch(err => this.setState({ errors: err.response.data }))
+    this.props.registerUser(newUser)
+    // db.post('/api/users/register', newUser)
+    //   .then(res => console.log(res.data))
+    //   .catch(err => this.setState({ errors: err.response.data }))
   }
 
   render() {
@@ -80,4 +83,11 @@ class Login extends Component {
   }
 }
 
-export default Login
+const mapStateToProps = state => ({
+  auth: state.auth
+})
+
+export default connect(
+  mapStateToProps,
+  { registerUser }
+)(Login)
