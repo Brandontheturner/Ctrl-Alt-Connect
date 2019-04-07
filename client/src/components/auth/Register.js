@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { registerUser } from '../../actions/authActions'
 import { Button, Form, Container, Message, Header } from 'semantic-ui-react'
-import db from '../../api/db'
 
 class Login extends Component {
   state = {
@@ -18,9 +17,10 @@ class Login extends Component {
     const { name, email, password, password2 } = this.state
     const newUser = { name, email, password, password2 }
     this.props.registerUser(newUser)
-    // db.post('/api/users/register', newUser)
-    //   .then(res => console.log(res.data))
-    //   .catch(err => this.setState({ errors: err.response.data }))
+  }
+
+  componentWillReceiveProps({ errors }) {
+    if (errors) this.setState({ errors })
   }
 
   render() {
@@ -84,7 +84,8 @@ class Login extends Component {
 }
 
 const mapStateToProps = state => ({
-  auth: state.auth
+  auth: state.auth,
+  errors: state.errors
 })
 
 export default connect(

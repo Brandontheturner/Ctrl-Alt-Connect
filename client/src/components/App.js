@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { Router, Route } from 'react-router-dom'
 import { Container } from 'semantic-ui-react'
+import history from '../history'
 import Navbar from './layout/Navbar'
 import Landing from './layout/Landing'
 import Footer from './layout/Footer'
@@ -11,7 +12,7 @@ import './App.css'
 class App extends Component {
   render() {
     return (
-      <Router>
+      <Router history={history}>
         <div>
           <Navbar />
           <Route exact path="/" component={Landing} />
