@@ -3,12 +3,16 @@ import { Link } from 'react-router-dom'
 import { Menu, Container, Segment, Image } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { logoutUser } from '../../actions/authActions'
+import { clearCurrentProfile } from '../../actions/profileActions'
 
 class Navbar extends Component {
   state = { activeItem: 'home' }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
-  handleLogoutClick = () => this.props.logoutUser()
+  handleLogoutClick = () => {
+    this.props.logoutUser()
+    this.props.clearCurrentProfile()
+  }
 
   render() {
     const { activeItem } = this.state
@@ -90,5 +94,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { logoutUser }
+  { logoutUser, clearCurrentProfile }
 )(Navbar)
