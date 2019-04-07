@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Button, Container, Form, Header } from 'semantic-ui-react'
-import FormTextField from '../shared/FormTextField'
+import FormInput from './form/FormInput'
 
 class CreateProfile extends Component {
   state = {
@@ -34,7 +34,7 @@ class CreateProfile extends Component {
         </Header>
 
         <Form onSubmit={this.handleSubmit} error noValidate>
-          <FormTextField
+          <FormInput
             name="email"
             type="email"
             placeholder="Email Address"

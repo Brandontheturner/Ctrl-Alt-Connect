@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Button, Form, Container, Header } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { loginUser } from '../../actions/authActions'
-import FormTextField from '../shared/FormTextField'
+import FormInput from './form/FormInput'
 
 class Login extends Component {
   state = {
@@ -40,7 +40,7 @@ class Login extends Component {
           </Header.Subheader>
         </Header>
         <Form onSubmit={this.handleSubmit} error noValidate>
-          <FormTextField
+          <FormInput
             name="email"
             type="email"
             placeholder="Email Address"
@@ -49,7 +49,7 @@ class Login extends Component {
             disabled={false}
             error={errors.email}
           />
-          <FormTextField
+          <FormInput
             name="password"
             type="password"
             placeholder="Password"
