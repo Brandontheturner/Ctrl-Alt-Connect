@@ -15,6 +15,13 @@ export const registerUser = userData => dispatch => {
     )
 }
 
+export const setCurrentUser = userData => {
+  return {
+    type: SET_CURRENT_USER,
+    payload: userData
+  }
+}
+
 export const loginUser = userData => dispatch => {
   db.post('/api/users/login', userData)
     .then(res => {
@@ -35,9 +42,11 @@ export const loginUser = userData => dispatch => {
     )
 }
 
-export const setCurrentUser = userData => {
-  return {
-    type: SET_CURRENT_USER,
-    payload: userData
-  }
+export const logoutUser = () => dispatch => {
+  // Remove login toke from localStorage
+  localStorage.removeItem('jwtToken')
+  // Remove auth header
+  setAuthToken(false)
+  // Remove current user from redux store
+  dispatch(setCurrentUser({}))
 }

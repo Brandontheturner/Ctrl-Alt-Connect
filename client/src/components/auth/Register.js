@@ -19,6 +19,10 @@ class Login extends Component {
     this.props.registerUser(newUser)
   }
 
+  componentDidMount() {
+    if (this.props.auth.isAuthenticated) this.props.history.push('/dashboard')
+  }
+
   componentWillReceiveProps({ errors }) {
     if (errors) this.setState({ errors })
   }
@@ -26,7 +30,7 @@ class Login extends Component {
   render() {
     const { errors } = this.state
     return (
-      <Container text style={{ padding: '2rem' }}>
+      <Container text>
         <Header textAlign="center">
           <h1>Sign Up</h1>
           <p>Create your DevConnector account</p>

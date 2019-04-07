@@ -4,7 +4,7 @@ import App from './components/App'
 import { Provider } from 'react-redux'
 import jwt_decode from 'jwt-decode'
 import setAuthToken from './utils/setAuthToken'
-import { setCurrentUser } from './actions/authActions'
+import { setCurrentUser, logoutUser } from './actions/authActions'
 import store from './store'
 
 // Look for login token in localStorage
@@ -15,6 +15,10 @@ if (localStorage.jwtToken) {
   const userData = jwt_decode(localStorage.jwtToken)
   // Set current user
   store.dispatch(setCurrentUser(userData))
+
+  // Check for expired token, logout user if expired
+  const currentTime = Date.now() / 1000
+  if (userData.exp < currentTime) store.dispatch(logoutUser())
 }
 
 ReactDOM.render(
