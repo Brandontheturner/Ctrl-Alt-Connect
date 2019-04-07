@@ -1,3 +1,7 @@
+h1 {
+  font-size: 3rem;
+}
+
 .landing {
   position: relative;
   background: url('../img/showcase.jpg') no-repeat;
@@ -10,10 +14,6 @@
 .landing-inner {
   padding-top: 250px;
   color: #ecf0f1;
-}
-
-.landing-inner h1 {
-  font-size: 3rem;
 }
 
 .dark-overlay {

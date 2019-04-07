@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import { Menu, Container, Segment } from 'semantic-ui-react'
 
 class Navbar extends Component {
@@ -14,6 +15,8 @@ class Navbar extends Component {
         <Menu inverted pointing secondary>
           <Container>
             <Menu.Item
+              as={Link}
+              to="/"
               name="home"
               active={activeItem === 'home'}
               onClick={this.handleItemClick}
@@ -22,6 +25,8 @@ class Navbar extends Component {
             </Menu.Item>
 
             <Menu.Item
+              as={Link}
+              to="/profiles"
               name="developers"
               active={activeItem === 'developers'}
               onClick={this.handleItemClick}
@@ -31,6 +36,8 @@ class Navbar extends Component {
 
             <Menu.Menu position="right">
               <Menu.Item
+                as={Link}
+                to="/register"
                 name="signup"
                 active={activeItem === 'signup'}
                 onClick={this.handleItemClick}
@@ -39,6 +46,8 @@ class Navbar extends Component {
               </Menu.Item>
 
               <Menu.Item
+                as={Link}
+                to="/login"
                 name="login"
                 active={activeItem === 'login'}
                 onClick={this.handleItemClick}

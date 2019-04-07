@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { Button, Container } from 'semantic-ui-react'
 
 const Landing = () => {
@@ -11,8 +12,12 @@ const Landing = () => {
             Create a developer profile/portfolio, share posts and get help from
             other developers
           </p>
-          <Button primary>Sign Up</Button>
-          <Button>Login</Button>
+          <Button as={Link} to="/register" primary>
+            Sign Up
+          </Button>
+          <Button as={Link} to="/login">
+            Login
+          </Button>
         </Container>
       </div>
     </div>
