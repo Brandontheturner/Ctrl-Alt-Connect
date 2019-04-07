@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { Button, Form, Container, Message, Header } from 'semantic-ui-react'
+import { Button, Form, Container, Header } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { loginUser } from '../../actions/authActions'
+import FormTextField from '../shared/FormTextField'
 
 class Login extends Component {
   state = {
@@ -36,28 +37,25 @@ class Login extends Component {
           <h1>Login</h1>
           <p>Sign in your DevConnector account</p>
         </Header>
-        <Form onSubmit={this.handleSubmit} error>
-          <Form.Field>
-            <Form.Input
-              error={!!errors.email}
-              placeholder="Email Address"
-              name="email"
-              value={this.state.email}
-              onChange={this.handleChange}
-            />
-            <Message error content={errors.email} />
-          </Form.Field>
-          <Form.Field>
-            <Form.Input
-              error={!!errors.password}
-              placeholder="Password"
-              name="password"
-              type="password"
-              value={this.state.password}
-              onChange={this.handleChange}
-            />
-            <Message error content={errors.password} />
-          </Form.Field>
+        <Form onSubmit={this.handleSubmit} error noValidate>
+          <FormTextField
+            name="email"
+            type="email"
+            placeholder="Email Address"
+            value={this.state.email}
+            onChange={this.handleChange}
+            disabled={false}
+            error={errors.email}
+          />
+          <FormTextField
+            name="password"
+            type="password"
+            placeholder="Password"
+            value={this.state.password}
+            onChange={this.handleChange}
+            disabled={false}
+            error={errors.password}
+          />
           <Button fluid primary type="submit">
             Submit
           </Button>

@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { registerUser } from '../../actions/authActions'
-import { Button, Form, Container, Message, Header } from 'semantic-ui-react'
+import { Button, Form, Container, Header } from 'semantic-ui-react'
+import FormTextField from '../shared/FormTextField'
 
 class Login extends Component {
   state = {
@@ -35,49 +36,43 @@ class Login extends Component {
           <h1>Sign Up</h1>
           <p>Create your DevConnector account</p>
         </Header>
-        <Form onSubmit={this.handleSubmit} error>
-          <Form.Field>
-            <Form.Input
-              error={!!errors.name}
-              placeholder="Name"
-              name="name"
-              value={this.state.name}
-              onChange={this.handleChange}
-            />
-            <Message error content={errors.name} />
-          </Form.Field>
-          <Form.Field>
-            <Form.Input
-              error={!!errors.email}
-              placeholder="Email Address"
-              name="email"
-              value={this.state.email}
-              onChange={this.handleChange}
-            />
-            <Message error content={errors.email} />
-          </Form.Field>
-          <Form.Field>
-            <Form.Input
-              error={!!errors.password}
-              placeholder="Password"
-              name="password"
-              type="password"
-              value={this.state.password}
-              onChange={this.handleChange}
-            />
-            <Message error content={errors.password} />
-          </Form.Field>
-          <Form.Field>
-            <Form.Input
-              error={!!errors.password2}
-              placeholder="Confirm Password"
-              name="password2"
-              type="password"
-              value={this.state.password2}
-              onChange={this.handleChange}
-            />
-            <Message error content={errors.password2} />
-          </Form.Field>
+        <Form onSubmit={this.handleSubmit} error noValidate>
+          <FormTextField
+            name="name"
+            type="text"
+            placeholder="Name"
+            value={this.state.name}
+            onChange={this.handleChange}
+            disabled={false}
+            error={errors.name}
+          />
+          <FormTextField
+            name="email"
+            type="email"
+            placeholder="Email Address"
+            value={this.state.email}
+            onChange={this.handleChange}
+            disabled={false}
+            error={errors.email}
+          />
+          <FormTextField
+            name="password"
+            type="password"
+            placeholder="Password"
+            value={this.state.password}
+            onChange={this.handleChange}
+            disabled={false}
+            error={errors.password}
+          />
+          <FormTextField
+            name="password2"
+            type="password"
+            placeholder="Confirm Password"
+            value={this.state.password2}
+            onChange={this.handleChange}
+            disabled={false}
+            error={errors.password2}
+          />
           <Button fluid primary type="submit">
             Submit
           </Button>
