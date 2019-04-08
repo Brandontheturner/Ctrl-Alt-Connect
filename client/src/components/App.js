@@ -9,6 +9,7 @@ import Footer from './layout/Footer'
 import Login from './auth/Login'
 import Register from './auth/Register'
 import CreateProfile from './auth/CreateProfile'
+import EditProfile from './auth/EditProfile'
 import Dashboard from './dashboard'
 import './App.css'
 
@@ -24,6 +25,7 @@ class App extends Component {
             <Route path="/login" component={Login} />
             <PrivateRoute path="/dashboard" component={Dashboard} />
             <PrivateRoute path="/create-profile" component={CreateProfile} />
+            <PrivateRoute path="/edit-profile" component={EditProfile} />
           </Container>
           <Footer />
         </div>
