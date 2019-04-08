@@ -4,6 +4,7 @@ import { Container, Form, Header } from 'semantic-ui-react'
 import FormInput from './form/FormInput'
 import FormSelect from './form/FormSelect'
 import FormTextArea from './form/FormTextArea'
+import { createProfile } from '../../actions/profileActions'
 import './form/Forms.css'
 
 const options = [
@@ -36,10 +37,33 @@ class CreateProfile extends Component {
   }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
-  handleSubmit = () => {}
+  handleSubmit = () =>
+    this.props.createProfile({
+      handle: this.state.handle,
+      company: this.state.company,
+      website: this.state.website,
+      location: this.state.location,
+      status: this.state.status,
+      skills: this.state.skills,
+      githubusername: this.state.githubusername,
+      bio: this.state.bio,
+      twitter: this.state.twitter,
+      facebook: this.state.facebook,
+      linkedin: this.state.linkedin,
+      youtube: this.state.youtube,
+      instagram: this.state.instagram
+    })
 
-  toggleDisplaySocial = () =>
+  toggleDisplaySocial = e => {
     this.setState({ displaySocial: !this.state.displaySocial })
+  }
+
+  static getDeriveStateFromProps({ errors }) {
+    if (errors) return { errors }
+  }
+  componentDidUpdate({ errors }) {
+    if (errors !== this.state.errors) this.setState({ errors })
+  }
 
   render() {
     const { errors, displaySocial } = this.state
@@ -53,6 +77,7 @@ class CreateProfile extends Component {
           </Header.Subheader>
         </Header>
         <Form onSubmit={this.handleSubmit} error noValidate>
+          <span>* = required fields</span>
           <FormInput // Handle
             name="handle"
             type="text"
@@ -102,7 +127,7 @@ class CreateProfile extends Component {
           <FormInput // Skills
             name="skills"
             type="text"
-            placeholder="Skills"
+            placeholder="* Skills"
             label="Please use comma separated values (eg. HTML,CSS,JavaScript,PHP)"
             value={this.state.skills}
             onChange={this.handleChange}
@@ -119,16 +144,15 @@ class CreateProfile extends Component {
           />
           <FormTextArea // Bio
             name="bio"
-            type=""
             placeholder="A short bio of you"
             label="Tell us a little about yourself"
             value={this.state.bio}
             onChange={this.handleChange}
             error={errors.bio}
           />
-
           {/* SOCIAL NETWORKS */}
           <Form.Button
+            type="button"
             content="Add Social Links"
             onClick={this.toggleDisplaySocial}
           />
@@ -195,4 +219,7 @@ class CreateProfile extends Component {
 
 const mapStateToProps = ({ profile, errors }) => ({ profile, errors })
 
-export default connect(mapStateToProps)(CreateProfile)
+export default connect(
+  mapStateToProps,
+  { createProfile }
+)(CreateProfile)
