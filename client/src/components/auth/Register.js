@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { registerUser } from '../../actions/authActions'
-import { Button, Form, Container, Header } from 'semantic-ui-react'
+import { Form, Container, Header } from 'semantic-ui-react'
 
 class Register extends Component {
   state = {
@@ -72,9 +72,7 @@ class Register extends Component {
             disabled={false}
             error={errors.password2}
           />
-          <Button fluid primary type="submit">
-            Submit
-          </Button>
+          <Form.Button fluid primary content="Submit" type="submit" />
         </Form>
       </Container>
     )
