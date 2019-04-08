@@ -7,17 +7,19 @@ const FormInput = ({
   placeholder,
   label,
   value,
+  options,
   onChange,
   error
 }) => {
   return (
     <>
-      <Form.TextArea
+      <Form.Select
         name={name}
         type={type}
         placeholder={placeholder}
         value={value}
         onChange={onChange}
+        options={options}
         error={error}
       />
       {label && (

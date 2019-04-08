@@ -1,0 +1,9 @@
+.ui.form .field {
+  margin: 10px 0 0 0;
+}
+.ui.basic.label {
+  margin: 0 0 10px 0;
+  border: none;
+  padding: 0;
+  color: rgba(0, 0, 0, 0.5);
+}
