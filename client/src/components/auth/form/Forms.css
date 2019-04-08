@@ -7,3 +7,8 @@
   padding: 0;
   color: rgba(0, 0, 0, 0.5);
 }
+.ui.form .error.message,
+.ui.form .success.message,
+.ui.form .warning.message {
+  margin: 1em 0 0 0;
+}

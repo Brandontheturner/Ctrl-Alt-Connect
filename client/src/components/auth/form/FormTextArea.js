@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Label } from 'semantic-ui-react'
+import { Form, Label, Message } from 'semantic-ui-react'
 
 const FormInput = ({
   name,
@@ -14,12 +14,12 @@ const FormInput = ({
     <>
       <Form.TextArea
         name={name}
-        type={type}
         placeholder={placeholder}
         value={value}
         onChange={onChange}
-        error={error}
+        error={!!error}
       />
+      {error && <Message error content={error} size="mini" />}
       {label && (
         <Label basic size="small">
           {label}
