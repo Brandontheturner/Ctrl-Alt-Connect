@@ -2,7 +2,8 @@ import {
   GET_PROFILE,
   PROFILE_LOADING,
   CLEAR_CURRENT_PROFILE,
-  GET_ERRORS
+  GET_ERRORS,
+  SET_CURRENT_USER
 } from './types'
 import db from '../api/db'
 import history from '../history'
@@ -27,6 +28,13 @@ export const getCurrentProfile = () => dispatch => {
 export const createProfile = profileData => dispatch => {
   db.post('/profile', profileData)
     .then(res => history.push('/dashboard'))
+    .catch(err => dispatch({ type: GET_ERRORS, payload: err.response.data }))
+}
+
+export const deleteAccount = () => dispatch => {
+  // delete and log user out
+  db.delete('/profile')
+    .then(res => dispatch({ type: SET_CURRENT_USER, payload: {} }))
     .catch(err => dispatch({ type: GET_ERRORS, payload: err.response.data }))
 }
 
