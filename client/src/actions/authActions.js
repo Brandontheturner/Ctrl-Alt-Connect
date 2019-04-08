@@ -5,7 +5,7 @@ import jwt_decode from 'jwt-decode'
 import setAuthToken from '../utils/setAuthToken'
 
 export const registerUser = userData => dispatch => {
-  db.post('/api/users/register', userData)
+  db.post('/users/register', userData)
     .then(res => history.push('/login'))
     .catch(err =>
       dispatch({
@@ -23,7 +23,7 @@ export const setCurrentUser = userData => {
 }
 
 export const loginUser = userData => dispatch => {
-  db.post('/api/users/login', userData)
+  db.post('/users/login', userData)
     .then(res => {
       // Save token to localStorage
       const { token } = res.data
