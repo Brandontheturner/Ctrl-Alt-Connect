@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Container, Form, Header } from 'semantic-ui-react'
 import FormInput from './form/FormInput'
+import FormInputWithIcon from './form/FormInputWithIcon'
 import FormSelect from './form/FormSelect'
 import FormTextArea from './form/FormTextArea'
 import { createProfile, getCurrentProfile } from '../../actions/profileActions'
@@ -114,7 +115,7 @@ class EditProfile extends Component {
             name="handle"
             type="text"
             placeholder="* Profile handle"
-            label="A unique handle for your profile URL. Your full name, company name,
+            info="A unique handle for your profile URL. Your full name, company name,
             nickname, etc (This CAN'T be changed later)"
             value={this.state.handle}
             onChange={this.handleChange}
@@ -123,7 +124,7 @@ class EditProfile extends Component {
           <FormSelect
             name="status"
             placeholder="* Select Professional Status"
-            label="Give us an idea of where you are at in your career"
+            info="Give us an idea of where you are at in your career"
             value={this.state.status}
             onChange={this.handleChange}
             options={options}
@@ -133,7 +134,7 @@ class EditProfile extends Component {
             name="company"
             type="text"
             placeholder="Company"
-            label="Could be your own company or one you work for"
+            info="Could be your own company or one you work for"
             value={this.state.company}
             onChange={this.handleChange}
             error={errors.company}
@@ -142,7 +143,7 @@ class EditProfile extends Component {
             name="website"
             type="text"
             placeholder="Website"
-            label="Could be your own or a company website"
+            info="Could be your own or a company website"
             value={this.state.website}
             onChange={this.handleChange}
             error={errors.website}
@@ -151,7 +152,7 @@ class EditProfile extends Component {
             name="location"
             type="text"
             placeholder="Location"
-            label="City & state suggested (eg. Boston, MA)"
+            info="City & state suggested (eg. Boston, MA)"
             value={this.state.location}
             onChange={this.handleChange}
             error={errors.location}
@@ -160,7 +161,7 @@ class EditProfile extends Component {
             name="skills"
             type="text"
             placeholder="* Skills"
-            label="Please use comma separated values (eg. HTML,CSS,JavaScript,PHP)"
+            info="Please use comma separated values (eg. HTML,CSS,JavaScript,PHP)"
             value={this.state.skills}
             onChange={this.handleChange}
             error={errors.skills}
@@ -169,7 +170,7 @@ class EditProfile extends Component {
             name="githubusername"
             type="text"
             placeholder="Github Username"
-            label="If you want your latest repos and a Github link, include your username"
+            info="If you want your latest repos and a Github link, include your username"
             value={this.state.githubusername}
             onChange={this.handleChange}
             error={errors.githubusername}
@@ -177,7 +178,7 @@ class EditProfile extends Component {
           <FormTextArea // Bio
             name="bio"
             placeholder="A short bio of you"
-            label="Tell us a little about yourself"
+            info="Tell us a little about yourself"
             value={this.state.bio}
             onChange={this.handleChange}
             error={errors.bio}
@@ -190,7 +191,7 @@ class EditProfile extends Component {
           />
           {displaySocial && (
             <>
-              <FormInput // Twitter
+              <FormInputWithIcon // Twitter
                 name="twitter"
                 type="url"
                 placeholder="Twitter Profile URL"
@@ -200,7 +201,7 @@ class EditProfile extends Component {
                 onChange={this.handleChange}
                 error={errors.twitter}
               />
-              <FormInput // Linkedin
+              <FormInputWithIcon // Linkedin
                 name="linkedin"
                 type="url"
                 placeholder="LinkedIn Profile URL"
@@ -210,7 +211,7 @@ class EditProfile extends Component {
                 onChange={this.handleChange}
                 error={errors.linkedin}
               />
-              <FormInput // Instagram
+              <FormInputWithIcon // Instagram
                 name="instagram"
                 type="url"
                 placeholder="Instagram Page URL"
@@ -220,7 +221,7 @@ class EditProfile extends Component {
                 onChange={this.handleChange}
                 error={errors.instagram}
               />
-              <FormInput // Facebook
+              <FormInputWithIcon // Facebook
                 name="facebook"
                 type="url"
                 placeholder="Facebook Page URL"
@@ -230,7 +231,7 @@ class EditProfile extends Component {
                 onChange={this.handleChange}
                 error={errors.facebook}
               />
-              <FormInput // YouTube
+              <FormInputWithIcon // YouTube
                 name="youtube"
                 type="url"
                 placeholder="YouTube Channel URL"

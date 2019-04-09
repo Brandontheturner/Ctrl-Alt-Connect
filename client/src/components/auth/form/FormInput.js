@@ -5,40 +5,29 @@ const FormInput = ({
   name,
   type,
   placeholder,
-  icon,
-  iconPosition,
+  info,
   label,
   value,
   onChange,
+  disabled,
   error
 }) => {
   return (
     <>
-      {icon ? (
-        <Form.Input
-          name={name}
-          type={type}
-          placeholder={placeholder}
-          icon={icon}
-          iconPosition={iconPosition}
-          value={value}
-          onChange={onChange}
-          error={!!error}
-        />
-      ) : (
-        <Form.Input
-          name={name}
-          type={type}
-          placeholder={placeholder}
-          value={value}
-          onChange={onChange}
-          error={!!error}
-        />
-      )}
+      <Form.Input
+        name={name}
+        type={type}
+        placeholder={placeholder}
+        value={value}
+        label={label}
+        onChange={onChange}
+        disabled={disabled}
+        error={!!error}
+      />
       {error && <Message error content={error} size="mini" />}
-      {label && (
+      {info && (
         <Label basic size="small">
-          {label}
+          {info}
         </Label>
       )}
     </>

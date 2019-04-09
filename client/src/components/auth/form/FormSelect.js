@@ -5,9 +5,11 @@ const FormInput = ({
   name,
   type,
   placeholder,
+  info,
   label,
   value,
   options,
+  disabled,
   onChange,
   error
 }) => {
@@ -18,14 +20,16 @@ const FormInput = ({
         type={type}
         placeholder={placeholder}
         value={value}
+        label={label}
         onChange={onChange}
+        disabled={disabled}
         options={options}
         error={!!error}
       />
       {error && <Message error content={error} size="mini" />}
-      {label && (
+      {info && (
         <Label basic size="small">
-          {label}
+          {info}
         </Label>
       )}
     </>

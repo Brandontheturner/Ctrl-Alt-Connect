@@ -3,25 +3,32 @@ import { Form, Label, Message } from 'semantic-ui-react'
 
 const FormInput = ({
   name,
+  type,
   placeholder,
+  icon,
+  iconPosition,
   info,
   label,
   value,
-  onChange,
   disabled,
+  onChange,
   error
 }) => {
   return (
     <>
-      <Form.TextArea
+      <Form.Input
         name={name}
+        type={type}
         placeholder={placeholder}
+        icon={icon}
+        iconPosition={iconPosition}
         value={value}
         label={label}
-        onChange={onChange}
         disabled={disabled}
+        onChange={onChange}
         error={!!error}
       />
+
       {error && <Message error content={error} size="mini" />}
       {info && (
         <Label basic size="small">
