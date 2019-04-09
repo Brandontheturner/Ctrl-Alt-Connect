@@ -31,6 +31,17 @@ export const createProfile = profileData => dispatch => {
     .catch(err => dispatch({ type: GET_ERRORS, payload: err.response.data }))
 }
 
+export const addExperience = experienceData => dispatch => {
+  db.post('/profile/experience', experienceData)
+    .then(res => history.push('/dashboard'))
+    .catch(err => dispatch({ type: GET_ERRORS, payload: err.response.data }))
+}
+export const addEducation = educationData => dispatch => {
+  db.post('/profile/education', educationData)
+    .then(res => history.push('/dashboard'))
+    .catch(err => dispatch({ type: GET_ERRORS, payload: err.response.data }))
+}
+
 export const deleteAccount = () => dispatch => {
   // delete and log user out
   db.delete('/profile')

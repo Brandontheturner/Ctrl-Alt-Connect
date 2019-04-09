@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import { Container, Form, Header, Button } from 'semantic-ui-react'
+import { Container, Form, Header } from 'semantic-ui-react'
 import { connect } from 'react-redux'
-// import { addExperience } from '../../../actions/profileActions'
+import { addExperience } from '../../../actions/profileActions'
 import FormInput from '../../shared/form/FormInput'
 import FormTextArea from '../../shared/form/FormTextArea'
+import BackToDashboard from '../../shared/buttons/BackToDashboard'
 
 class AddExperience extends Component {
   state = {
@@ -25,13 +25,27 @@ class AddExperience extends Component {
       disabled: !this.state.disabled,
       current: !this.state.current
     })
-  handleSubmit = () => {}
+  handleSubmit = () => {
+    this.props.addExperience({
+      company: this.state.company,
+      title: this.state.title,
+      location: this.state.location,
+      description: this.state.description,
+      from: this.state.from,
+      to: this.state.to,
+      current: this.state.current
+    })
+  }
+
+  componentWillReceiveProps({ errors }) {
+    if (errors) this.setState({ errors })
+  }
 
   render() {
     const { errors } = this.state
     return (
       <Container text className="">
-        <Button as={Link} to="/dashboard" content="Go Back" />
+        <BackToDashboard />
         <Header as="h1" textAlign="center">
           Add Experience
           <Header.Subheader>
@@ -88,6 +102,7 @@ class AddExperience extends Component {
           <FormTextArea // Job Description
             name="description"
             placeholder="Job Description"
+            info="Tell us about the position"
             value={this.state.description}
             onChange={this.handleChange}
             error={errors.description}
@@ -104,5 +119,5 @@ const mapStateToProps = ({ profile, errors }) => ({ profile, errors })
 
 export default connect(
   mapStateToProps,
-  {}
+  { addExperience }
 )(AddExperience)
