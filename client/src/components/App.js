@@ -13,6 +13,7 @@ import CreateProfile from './dashboard/profile-actions/CreateProfile'
 import EditProfile from './dashboard/profile-actions/EditProfile'
 import AddExperience from './dashboard/add-credentials/AddExperience'
 import AddEducation from './dashboard/add-credentials/AddEducation'
+import Profiles from './profiles/Profiles'
 import './App.css'
 
 class App extends Component {
@@ -25,6 +26,7 @@ class App extends Component {
           <Container className="body">
             <Route path="/register" component={Register} />
             <Route path="/login" component={Login} />
+            <Route path="/profiles" component={Profiles} />
             <PrivateRoute path="/dashboard" component={Dashboard} />
             <PrivateRoute path="/create-profile" component={CreateProfile} />
             <PrivateRoute path="/edit-profile" component={EditProfile} />

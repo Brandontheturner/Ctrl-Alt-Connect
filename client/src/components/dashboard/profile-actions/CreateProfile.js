@@ -66,7 +66,7 @@ class CreateProfile extends Component {
     const { errors, displaySocial } = this.state
 
     return (
-      <Container text className="">
+      <Container text>
         <Header as="h1" textAlign="center">
           Create Profile
           <Header.Subheader>

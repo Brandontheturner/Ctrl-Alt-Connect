@@ -8,8 +8,6 @@ class Experience extends Component {
   handleDeleteClick = id => this.props.deleteExperience(id)
 
   render() {
-    const { experience } = this.props
-
     return (
       <>
         <Header>Experience</Header>

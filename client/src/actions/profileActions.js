@@ -3,7 +3,8 @@ import {
   PROFILE_LOADING,
   CLEAR_CURRENT_PROFILE,
   GET_ERRORS,
-  SET_CURRENT_USER
+  SET_CURRENT_USER,
+  GET_PROFILES
 } from './types'
 import db from '../api/db'
 import history from '../history'
@@ -21,6 +22,23 @@ export const getCurrentProfile = () => dispatch => {
       dispatch({
         type: GET_PROFILE,
         payload: {}
+      })
+    )
+}
+
+export const getProfiles = () => dispatch => {
+  dispatch(setProfileLoding())
+  db.get('/profile/all')
+    .then(res =>
+      dispatch({
+        type: GET_PROFILES,
+        payload: res.data
+      })
+    ) // no profiles
+    .catch(err =>
+      dispatch({
+        type: GET_PROFILES,
+        payload: null
       })
     )
 }
