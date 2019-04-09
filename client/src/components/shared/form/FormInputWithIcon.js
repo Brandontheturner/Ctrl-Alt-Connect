@@ -1,5 +1,6 @@
 import React from 'react'
 import { Form, Label, Message } from 'semantic-ui-react'
+import '../css/Forms.css'
 
 const FormInput = ({
   name,

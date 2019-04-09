@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { registerUser } from '../../actions/authActions'
 import { Form, Container, Header } from 'semantic-ui-react'
+import FormInput from '../shared/form/FormInput'
 
 class Register extends Component {
   state = {
@@ -36,7 +37,7 @@ class Register extends Component {
           <Header.Subheader>Create your DevConnector account</Header.Subheader>
         </Header>
         <Form onSubmit={this.handleSubmit} error noValidate>
-          <Form.Input
+          <FormInput
             name="name"
             type="text"
             placeholder="Name"
@@ -45,7 +46,7 @@ class Register extends Component {
             disabled={false}
             error={errors.name}
           />
-          <Form.Input
+          <FormInput
             name="email"
             type="email"
             placeholder="Email Address"
@@ -54,7 +55,7 @@ class Register extends Component {
             disabled={false}
             error={errors.email}
           />
-          <Form.Input
+          <FormInput
             name="password"
             type="password"
             placeholder="Password"
@@ -63,7 +64,7 @@ class Register extends Component {
             disabled={false}
             error={errors.password}
           />
-          <Form.Input
+          <FormInput
             name="password2"
             type="password"
             placeholder="Confirm Password"

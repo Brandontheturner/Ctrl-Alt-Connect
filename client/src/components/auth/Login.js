@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Form, Container, Header } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { loginUser } from '../../actions/authActions'
-import FormInput from './form/FormInput'
+import FormInput from '../shared/form/FormInput'
 
 class Login extends Component {
   state = {
@@ -45,7 +45,6 @@ class Login extends Component {
             type="email"
             placeholder="Email Address"
             value={this.state.email}
-            info={'Test'}
             onChange={this.handleChange}
             disabled={false}
             error={errors.email}

@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Container, Form, Header } from 'semantic-ui-react'
-import FormInput from './form/FormInput'
-import FormInputWithIcon from './form/FormInputWithIcon'
-import FormSelect from './form/FormSelect'
-import FormTextArea from './form/FormTextArea'
-import { createProfile } from '../../actions/profileActions'
-import './form/Forms.css'
+import FormInput from '../../shared/form/FormInput'
+import FormInputWithIcon from '../../shared/form/FormInputWithIcon'
+import FormSelect from '../../shared/form/FormSelect'
+import FormTextArea from '../../shared/form/FormTextArea'
+import {
+  createProfile,
+  getCurrentProfile
+} from '../../../actions/profileActions'
+import isEmpty from '../../../validation/is-empty'
 
 const options = [
   { text: 'Developer', value: 'Developer' },
@@ -18,7 +21,7 @@ const options = [
   { text: 'Intern', value: 'Intern' },
   { text: 'Other', value: 'Other' }
 ]
-class CreateProfile extends Component {
+class EditProfile extends Component {
   state = {
     handle: '',
     company: '',
@@ -38,7 +41,7 @@ class CreateProfile extends Component {
   }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
-  handleSubmit = () =>
+  handleSubmit = () => {
     this.props.createProfile({
       handle: this.state.handle,
       company: this.state.company,
@@ -54,16 +57,50 @@ class CreateProfile extends Component {
       youtube: this.state.youtube,
       instagram: this.state.instagram
     })
+  }
 
   toggleDisplaySocial = e => {
     this.setState({ displaySocial: !this.state.displaySocial })
   }
 
-  // componentWillReceiveProps({ errors }) {
-  //   if (errors) this.setState({ errors })
-  // }
-  static getDerivedStateFromProps({ errors }) {
-    if (errors) return { errors }
+  componentWillReceiveProps({ errors, profile: { profile } }) {
+    if (errors) this.setState({ errors })
+
+    // Populate any existing profile data to the edit profile form fields
+    if (profile) {
+      const skillsCSV = profile.skills.join(',')
+      // Handle optional profile fields that might not exist
+      profile.company = !isEmpty(profile.company) ? profile.company : ''
+      profile.website = !isEmpty(profile.website) ? profile.website : ''
+      profile.location = !isEmpty(profile.location) ? profile.location : ''
+      profile.bio = !isEmpty(profile.bio) ? profile.bio : ''
+      profile.githubusername = !isEmpty(profile.githubusername)
+        ? profile.githubusername
+        : ''
+      profile.social = !isEmpty(profile.social) ? profile.social : {}
+      profile.twitter = !isEmpty(profile.social.twitter)
+        ? profile.social.twitter
+        : ''
+      profile.facebook = !isEmpty(profile.social.facebook)
+        ? profile.social.facebook
+        : ''
+      profile.linkedin = !isEmpty(profile.social.linkedin)
+        ? profile.social.linkedin
+        : ''
+      profile.youtube = !isEmpty(profile.social.youtube)
+        ? profile.social.youtube
+        : ''
+      profile.instagram = !isEmpty(profile.social.instagram)
+        ? profile.social.instagram
+        : ''
+      // Apply to component state
+      this.setState({ ...profile, skills: skillsCSV })
+    }
+  }
+
+  // Get current profile data to fill edit profile form fields
+  componentDidMount() {
+    this.props.getCurrentProfile()
   }
 
   render() {
@@ -72,10 +109,7 @@ class CreateProfile extends Component {
     return (
       <Container text className="">
         <Header as="h1" textAlign="center">
-          Create Profile
-          <Header.Subheader>
-            Let's get some information to make your profile stand out
-          </Header.Subheader>
+          Edit Profile
         </Header>
         <Form onSubmit={this.handleSubmit} error noValidate>
           <span>* = required fields</span>
@@ -222,5 +256,5 @@ const mapStateToProps = ({ profile, errors }) => ({ profile, errors })
 
 export default connect(
   mapStateToProps,
-  { createProfile }
-)(CreateProfile)
+  { createProfile, getCurrentProfile }
+)(EditProfile)

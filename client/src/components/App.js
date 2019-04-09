@@ -8,9 +8,10 @@ import Landing from './layout/Landing'
 import Footer from './layout/Footer'
 import Login from './auth/Login'
 import Register from './auth/Register'
-import CreateProfile from './auth/CreateProfile'
-import EditProfile from './auth/EditProfile'
 import Dashboard from './dashboard'
+import CreateProfile from './dashboard/profile-actions/CreateProfile'
+import EditProfile from './dashboard/profile-actions/EditProfile'
+import AddExperience from './dashboard/add-credentials/AddExperience'
 import './App.css'
 
 class App extends Component {
@@ -26,6 +27,7 @@ class App extends Component {
             <PrivateRoute path="/dashboard" component={Dashboard} />
             <PrivateRoute path="/create-profile" component={CreateProfile} />
             <PrivateRoute path="/edit-profile" component={EditProfile} />
+            <PrivateRoute path="/add-experience" component={AddExperience} />
           </Container>
           <Footer />
         </div>
