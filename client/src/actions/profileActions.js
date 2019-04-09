@@ -42,6 +42,17 @@ export const addEducation = educationData => dispatch => {
     .catch(err => dispatch({ type: GET_ERRORS, payload: err.response.data }))
 }
 
+export const deleteExperience = id => dispatch => {
+  db.delete(`/profile/experience/${id}`).then(res =>
+    dispatch({ type: GET_PROFILE, payload: res.data })
+  )
+}
+export const deleteEducation = id => dispatch => {
+  db.delete(`/profile/education/${id}`).then(res =>
+    dispatch({ type: GET_PROFILE, payload: res.data })
+  )
+}
+
 export const deleteAccount = () => dispatch => {
   // delete and log user out
   db.delete('/profile')

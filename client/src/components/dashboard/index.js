@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { Loader, Button } from 'semantic-ui-react'
+import { Loader, Button, Header } from 'semantic-ui-react'
 import { getCurrentProfile } from '../../actions/profileActions'
 import ProfileControl from './ProfileControl'
+import DeleteAccountButton from './DeleteAccountButton'
+import Experience from './Experience'
+import Education from './Education'
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -23,21 +26,29 @@ class Dashboard extends Component {
       if (Object.keys(profile).length > 0) {
         dashboardContent = (
           <>
-            <h3>
+            <Header as={'h4'}>
               Welcome <Link to={`/profile/${profile.handle}`}>{user.name}</Link>
               !
-            </h3>
+            </Header>
             <ProfileControl />
+
+            <Experience experience={profile.experience} />
+
+            <Education education={profile.education} />
+
+            <DeleteAccountButton />
           </>
         )
       } else {
         dashboardContent = (
           <>
-            <h3>Welcome {user.name}!</h3>
-            <p>
-              You have not yet setup a profile, click the button below to share
-              some info!
-            </p>
+            <Header as={'h4'}>
+              Welcome {user.name}!
+              <Header.Subheader>
+                You have not yet setup a profile, click the button below to
+                share some info!
+              </Header.Subheader>
+            </Header>
             <Button primary as={Link} to="/create-profile">
               Create Profile
             </Button>
@@ -47,10 +58,10 @@ class Dashboard extends Component {
     }
 
     return (
-      <div>
-        <h1>Dashboard</h1>
+      <>
+        <Header as={'h1'}>Dashboard</Header>
         {dashboardContent}
-      </div>
+      </>
     )
   }
 }

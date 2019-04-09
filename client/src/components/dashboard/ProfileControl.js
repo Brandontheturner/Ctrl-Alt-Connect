@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Button } from 'semantic-ui-react'
-import DeleteAccountButton from './DeleteAccountButton'
 
 const ProfileControl = () => {
   return (
@@ -30,7 +29,6 @@ const ProfileControl = () => {
         />
       </Button.Group>
       {/* TODO EXP & EDU SECTIONS */}
-      <DeleteAccountButton />
     </>
   )
 }
