@@ -58,11 +58,8 @@ class CreateProfile extends Component {
     this.setState({ displaySocial: !this.state.displaySocial })
   }
 
-  // componentWillReceiveProps({ errors }) {
-  //   if (errors) this.setState({ errors })
-  // }
-  static getDerivedStateFromProps({ errors }) {
-    if (errors) return { errors }
+  componentWillReceiveProps({ errors }) {
+    if (errors) this.setState({ errors })
   }
 
   render() {

@@ -5,6 +5,7 @@ import FormInput from '../../shared/form/FormInput'
 import FormInputWithIcon from '../../shared/form/FormInputWithIcon'
 import FormSelect from '../../shared/form/FormSelect'
 import FormTextArea from '../../shared/form/FormTextArea'
+import BackToDashboard from '../../shared/buttons/BackToDashboard'
 import {
   createProfile,
   getCurrentProfile
@@ -108,6 +109,7 @@ class EditProfile extends Component {
 
     return (
       <Container text className="">
+        <BackToDashboard />
         <Header as="h1" textAlign="center">
           Edit Profile
         </Header>
