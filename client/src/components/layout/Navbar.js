@@ -6,25 +6,28 @@ import { logoutUser } from '../../actions/authActions'
 import { clearCurrentProfile } from '../../actions/profileActions'
 
 class Navbar extends Component {
-  state = { activeItem: 'home' }
-
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
   handleLogoutClick = () => {
     this.props.logoutUser()
     this.props.clearCurrentProfile()
   }
 
   render() {
-    const { activeItem } = this.state
     const { isAuthenticated, user } = this.props.auth
 
     const adminLinks = (
       <Menu.Menu position="right">
         <Menu.Item
           as={Link}
+          to="/dashboard"
+          name="dashboard"
+          onClick={this.handleItemClick}
+        >
+          Dashboard
+        </Menu.Item>
+        <Menu.Item
+          as={Link}
           to="/login"
           name="logout"
-          active={activeItem === 'logout'}
           onClick={this.handleLogoutClick}
         >
           <Image src={user.avatar} style={{ marginRight: '10px' }} avatar />
@@ -38,7 +41,6 @@ class Navbar extends Component {
           as={Link}
           to="/register"
           name="signup"
-          active={activeItem === 'signup'}
           onClick={this.handleItemClick}
         >
           Sign Up
@@ -48,7 +50,6 @@ class Navbar extends Component {
           as={Link}
           to="/login"
           name="login"
-          active={activeItem === 'login'}
           onClick={this.handleItemClick}
         >
           Login
@@ -64,7 +65,6 @@ class Navbar extends Component {
               as={Link}
               to="/"
               name="home"
-              active={activeItem === 'home'}
               onClick={this.handleItemClick}
             >
               DevConnector
@@ -74,7 +74,6 @@ class Navbar extends Component {
               as={Link}
               to="/profiles"
               name="developers"
-              active={activeItem === 'developers'}
               onClick={this.handleItemClick}
             >
               Developers
