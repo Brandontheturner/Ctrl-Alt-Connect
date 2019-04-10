@@ -13,6 +13,7 @@ import CreateProfile from './dashboard/profile-actions/CreateProfile'
 import EditProfile from './dashboard/profile-actions/EditProfile'
 import AddExperience from './dashboard/add-credentials/AddExperience'
 import AddEducation from './dashboard/add-credentials/AddEducation'
+import AccountSettings from './settings'
 import Profiles from './profiles/Profiles'
 import './App.css'
 
@@ -32,6 +33,7 @@ class App extends Component {
             <PrivateRoute path="/edit-profile" component={EditProfile} />
             <PrivateRoute path="/add-experience" component={AddExperience} />
             <PrivateRoute path="/add-education" component={AddEducation} />
+            <PrivateRoute path="/settings" component={AccountSettings} />
           </Container>
           <Footer />
         </div>

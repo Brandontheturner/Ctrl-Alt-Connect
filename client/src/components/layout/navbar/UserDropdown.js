@@ -15,6 +15,11 @@ class DropdownImageTriggerExample extends Component {
         <Dropdown.Menu>
           <Dropdown.Item
             as={Link}
+            to="/settings"
+            text="Settings"
+            icon="settings"
+          />
+          <Dropdown.Item
             text="Sign Out"
             icon="log out"
             onClick={this.props.logout}

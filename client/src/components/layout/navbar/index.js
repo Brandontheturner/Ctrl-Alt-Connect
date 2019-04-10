@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Menu, Container, Segment, Image } from 'semantic-ui-react'
+import { Menu, Container } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { logoutUser } from '../../../actions/authActions'
 import { clearCurrentProfile } from '../../../actions/profileActions'

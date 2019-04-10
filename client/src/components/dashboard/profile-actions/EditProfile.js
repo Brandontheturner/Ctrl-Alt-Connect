@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Container, Form, Header } from 'semantic-ui-react'
+import { Container, Form, Header, Segment } from 'semantic-ui-react'
 import FormInput from '../../shared/form/FormInput'
 import FormInputWithIcon from '../../shared/form/FormInputWithIcon'
 import FormSelect from '../../shared/form/FormSelect'
@@ -109,146 +109,148 @@ class EditProfile extends Component {
 
     return (
       <Container text className="">
-        <BackToDashboard />
-        <Header as="h1" textAlign="center">
-          Edit Profile
-        </Header>
-        <Form onSubmit={this.handleSubmit} error noValidate>
-          <span>* = required fields</span>
-          <FormInput // Handle
-            name="handle"
-            type="text"
-            placeholder="* Profile handle"
-            info="A unique handle for your profile URL. Your full name, company name,
+        <Segment>
+          <BackToDashboard />
+          <Header as="h1" textAlign="center">
+            Edit Profile
+          </Header>
+          <Form onSubmit={this.handleSubmit} error noValidate>
+            <span>* = required fields</span>
+            <FormInput // Handle
+              name="handle"
+              type="text"
+              placeholder="* Profile handle"
+              info="A unique handle for your profile URL. Your full name, company name,
             nickname, etc (This CAN'T be changed later)"
-            value={this.state.handle}
-            onChange={this.handleChange}
-            error={errors.handle}
-          />
-          <FormSelect
-            name="status"
-            placeholder="* Select Professional Status"
-            info="Give us an idea of where you are at in your career"
-            value={this.state.status}
-            onChange={this.handleChange}
-            options={options}
-            error={errors.status}
-          />
-          <FormInput // Company
-            name="company"
-            type="text"
-            placeholder="Company"
-            info="Could be your own company or one you work for"
-            value={this.state.company}
-            onChange={this.handleChange}
-            error={errors.company}
-          />
-          <FormInput // Website
-            name="website"
-            type="text"
-            placeholder="Website"
-            info="Could be your own or a company website"
-            value={this.state.website}
-            onChange={this.handleChange}
-            error={errors.website}
-          />
-          <FormInput // Location
-            name="location"
-            type="text"
-            placeholder="Location"
-            info="City & state suggested (eg. Boston, MA)"
-            value={this.state.location}
-            onChange={this.handleChange}
-            error={errors.location}
-          />
-          <FormInput // Skills
-            name="skills"
-            type="text"
-            placeholder="* Skills"
-            info="Please use comma separated values (eg. HTML,CSS,JavaScript,PHP)"
-            value={this.state.skills}
-            onChange={this.handleChange}
-            error={errors.skills}
-          />
-          <FormInput // Github Username
-            name="githubusername"
-            type="text"
-            placeholder="Github Username"
-            info="If you want your latest repos and a Github link, include your username"
-            value={this.state.githubusername}
-            onChange={this.handleChange}
-            error={errors.githubusername}
-          />
-          <FormTextArea // Bio
-            name="bio"
-            placeholder="A short bio of you"
-            info="Tell us a little about yourself"
-            value={this.state.bio}
-            onChange={this.handleChange}
-            error={errors.bio}
-          />
-          {/* SOCIAL NETWORKS */}
-          <Form.Button
-            type="button"
-            content="Add Social Links"
-            onClick={this.toggleDisplaySocial}
-          />
-          {displaySocial && (
-            <>
-              <FormInputWithIcon // Twitter
-                name="twitter"
-                type="url"
-                placeholder="Twitter Profile URL"
-                icon="twitter"
-                iconPosition="left"
-                value={this.state.twitter}
-                onChange={this.handleChange}
-                error={errors.twitter}
-              />
-              <FormInputWithIcon // Linkedin
-                name="linkedin"
-                type="url"
-                placeholder="LinkedIn Profile URL"
-                icon="linkedin"
-                iconPosition="left"
-                value={this.state.linkedin}
-                onChange={this.handleChange}
-                error={errors.linkedin}
-              />
-              <FormInputWithIcon // Instagram
-                name="instagram"
-                type="url"
-                placeholder="Instagram Page URL"
-                icon="instagram"
-                iconPosition="left"
-                value={this.state.instagram}
-                onChange={this.handleChange}
-                error={errors.instagram}
-              />
-              <FormInputWithIcon // Facebook
-                name="facebook"
-                type="url"
-                placeholder="Facebook Page URL"
-                icon="facebook"
-                iconPosition="left"
-                value={this.state.facebook}
-                onChange={this.handleChange}
-                error={errors.facebook}
-              />
-              <FormInputWithIcon // YouTube
-                name="youtube"
-                type="url"
-                placeholder="YouTube Channel URL"
-                icon="youtube"
-                iconPosition="left"
-                value={this.state.youtube}
-                onChange={this.handleChange}
-                error={errors.youtube}
-              />
-            </>
-          )}
-          <Form.Button fluid primary type="submit" content="Submit" />
-        </Form>
+              value={this.state.handle}
+              onChange={this.handleChange}
+              error={errors.handle}
+            />
+            <FormSelect
+              name="status"
+              placeholder="* Select Professional Status"
+              info="Give us an idea of where you are at in your career"
+              value={this.state.status}
+              onChange={this.handleChange}
+              options={options}
+              error={errors.status}
+            />
+            <FormInput // Company
+              name="company"
+              type="text"
+              placeholder="Company"
+              info="Could be your own company or one you work for"
+              value={this.state.company}
+              onChange={this.handleChange}
+              error={errors.company}
+            />
+            <FormInput // Website
+              name="website"
+              type="text"
+              placeholder="Website"
+              info="Could be your own or a company website"
+              value={this.state.website}
+              onChange={this.handleChange}
+              error={errors.website}
+            />
+            <FormInput // Location
+              name="location"
+              type="text"
+              placeholder="Location"
+              info="City & state suggested (eg. Boston, MA)"
+              value={this.state.location}
+              onChange={this.handleChange}
+              error={errors.location}
+            />
+            <FormInput // Skills
+              name="skills"
+              type="text"
+              placeholder="* Skills"
+              info="Please use comma separated values (eg. HTML,CSS,JavaScript,PHP)"
+              value={this.state.skills}
+              onChange={this.handleChange}
+              error={errors.skills}
+            />
+            <FormInput // Github Username
+              name="githubusername"
+              type="text"
+              placeholder="Github Username"
+              info="If you want your latest repos and a Github link, include your username"
+              value={this.state.githubusername}
+              onChange={this.handleChange}
+              error={errors.githubusername}
+            />
+            <FormTextArea // Bio
+              name="bio"
+              placeholder="A short bio of you"
+              info="Tell us a little about yourself"
+              value={this.state.bio}
+              onChange={this.handleChange}
+              error={errors.bio}
+            />
+            {/* SOCIAL NETWORKS */}
+            <Form.Button
+              type="button"
+              content="Add Social Links"
+              onClick={this.toggleDisplaySocial}
+            />
+            {displaySocial && (
+              <>
+                <FormInputWithIcon // Twitter
+                  name="twitter"
+                  type="url"
+                  placeholder="Twitter Profile URL"
+                  icon="twitter"
+                  iconPosition="left"
+                  value={this.state.twitter}
+                  onChange={this.handleChange}
+                  error={errors.twitter}
+                />
+                <FormInputWithIcon // Linkedin
+                  name="linkedin"
+                  type="url"
+                  placeholder="LinkedIn Profile URL"
+                  icon="linkedin"
+                  iconPosition="left"
+                  value={this.state.linkedin}
+                  onChange={this.handleChange}
+                  error={errors.linkedin}
+                />
+                <FormInputWithIcon // Instagram
+                  name="instagram"
+                  type="url"
+                  placeholder="Instagram Page URL"
+                  icon="instagram"
+                  iconPosition="left"
+                  value={this.state.instagram}
+                  onChange={this.handleChange}
+                  error={errors.instagram}
+                />
+                <FormInputWithIcon // Facebook
+                  name="facebook"
+                  type="url"
+                  placeholder="Facebook Page URL"
+                  icon="facebook"
+                  iconPosition="left"
+                  value={this.state.facebook}
+                  onChange={this.handleChange}
+                  error={errors.facebook}
+                />
+                <FormInputWithIcon // YouTube
+                  name="youtube"
+                  type="url"
+                  placeholder="YouTube Channel URL"
+                  icon="youtube"
+                  iconPosition="left"
+                  value={this.state.youtube}
+                  onChange={this.handleChange}
+                  error={errors.youtube}
+                />
+              </>
+            )}
+            <Form.Button fluid primary type="submit" content="Submit" />
+          </Form>
+        </Segment>
       </Container>
     )
   }

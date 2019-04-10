@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { Button, Header } from 'semantic-ui-react'
+import { Button, Header, Segment } from 'semantic-ui-react'
 import { getCurrentProfile } from '../../actions/profileActions'
 import ProfileControl from './ProfileControl'
-import DeleteAccountButton from './DeleteAccountButton'
 import Experience from './Experience'
 import Education from './Education'
-import Spinner from '../shared/loaders/Standard'
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -21,7 +19,7 @@ class Dashboard extends Component {
     let dashboardContent
 
     if (profile === null || loading) {
-      dashboardContent = <Spinner />
+      dashboardContent = null
     } else {
       // Check for empty profile before attempting to render
       if (Object.keys(profile).length > 0) {
@@ -34,7 +32,6 @@ class Dashboard extends Component {
             <ProfileControl />
             <Experience experience={profile.experience} />
             <Education education={profile.education} />
-            <DeleteAccountButton />
           </>
         )
       } else {
@@ -56,10 +53,10 @@ class Dashboard extends Component {
     }
 
     return (
-      <>
+      <Segment loading={profile === null || loading}>
         <Header as={'h1'}>Dashboard</Header>
         {dashboardContent}
-      </>
+      </Segment>
     )
   }
 }
