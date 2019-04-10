@@ -69,7 +69,7 @@ router.get('/all', (req, res) => {
  *  @desc   -->  Get a profile by handle
  *  @access -->  Public
  */
-router.get('/handle/:handle', (req, res) => {
+router.get('/:handle', (req, res) => {
   const errors = {}
   Profile.findOne({ handle: req.params.handle })
     .populate('user', ['name', 'avatar']) // populate user data when fetching profile

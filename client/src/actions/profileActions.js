@@ -12,18 +12,15 @@ import history from '../history'
 export const getCurrentProfile = () => dispatch => {
   dispatch(setProfileLoding())
   db.get('/profile')
-    .then(res =>
-      dispatch({
-        type: GET_PROFILE,
-        payload: res.data
-      })
-    ) // empty profile
-    .catch(err =>
-      dispatch({
-        type: GET_PROFILE,
-        payload: {}
-      })
-    )
+    .then(res => dispatch({ type: GET_PROFILE, payload: res.data }))
+    .catch(err => dispatch({ type: GET_PROFILE, payload: {} }))
+}
+
+export const getProfileByHandle = handle => dispatch => {
+  dispatch(setProfileLoding())
+  db.get(`/profile/${handle}`)
+    .then(res => dispatch({ type: GET_PROFILE, payload: res.data }))
+    .catch(err => dispatch({ type: GET_PROFILE, payload: null }))
 }
 
 export const getProfiles = () => dispatch => {

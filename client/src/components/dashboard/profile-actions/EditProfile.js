@@ -108,7 +108,7 @@ class EditProfile extends Component {
     const { errors, displaySocial } = this.state
 
     return (
-      <Container text className="">
+      <Container text>
         <Segment>
           <BackToDashboard />
           <Header as="h1" textAlign="center">

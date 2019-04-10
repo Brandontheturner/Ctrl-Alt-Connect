@@ -17,8 +17,8 @@ class ProfileItem extends Component {
     return (
       <Segment>
         <Grid columns={3} stackable>
-          <Grid.Column width={3}>
-            <Image src={profile.user.avatar} circular bordered size="small" />
+          <Grid.Column width={2}>
+            <Image src={profile.user.avatar} circular bordered size="tiny" />
           </Grid.Column>
           <Grid.Column width={8}>
             <Header as={'h2'}>
