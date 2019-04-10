@@ -3,12 +3,12 @@ import { Router, Route } from 'react-router-dom'
 import { Container } from 'semantic-ui-react'
 import history from '../history'
 import PrivateRoute from './routes/PrivateRoute'
-import Navbar from './layout/navbar'
+import Navbar from './layout/navbar/Navbar'
 import Landing from './layout/Landing'
 import Footer from './layout/Footer'
 import Login from './auth/Login'
 import Register from './auth/Register'
-import Dashboard from './dashboard'
+import Dashboard from './dashboard/Dashboard'
 import CreateProfile from './dashboard/profile-actions/CreateProfile'
 import EditProfile from './dashboard/profile-actions/EditProfile'
 import AddExperience from './dashboard/add-credentials/AddExperience'
@@ -21,7 +21,7 @@ class App extends Component {
   render() {
     return (
       <Router history={history}>
-        <div>
+        <>
           <Navbar />
           <Route exact path="/" component={Landing} />
           <Container className="body">
@@ -36,7 +36,7 @@ class App extends Component {
             <PrivateRoute path="/settings" component={AccountSettings} />
           </Container>
           <Footer />
-        </div>
+        </>
       </Router>
     )
   }

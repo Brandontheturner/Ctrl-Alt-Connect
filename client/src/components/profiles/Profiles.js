@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Container, Header } from 'semantic-ui-react'
+import { Container, Item, Header, Segment } from 'semantic-ui-react'
 import { getProfiles } from '../../actions/profileActions'
-import Spinner from '../shared/loaders/Standard'
+import ProfileItem from './ProfileItem'
 
 class Profiles extends Component {
   componentDidMount() {
@@ -14,24 +14,32 @@ class Profiles extends Component {
     let profileItems
 
     if (profiles === null || loading) {
-      profileItems = <Spinner />
+      profileItems = null
     } else {
       if (profiles.length) {
-        profileItems = <Header>PROFILES HERE</Header>
+        profileItems = (
+          <Item.Group>
+            {profiles.map(profile => (
+              <ProfileItem key={profile._id} profile={profile} />
+            ))}
+          </Item.Group>
+        )
       } else {
         profileItems = <Header>There are currently no profiles...</Header>
       }
     }
 
     return (
-      <Container text>
-        <Header as="h1" textAlign="center">
-          Developer Profiles
-          <Header.Subheader>
-            Browse and connect with other developers!
-          </Header.Subheader>
-        </Header>
-        {profileItems}
+      <Container>
+        <Segment loading={profiles === null || loading}>
+          <Header as="h1" textAlign="center">
+            Developer Profiles
+            <Header.Subheader>
+              Browse and connect with other developers!
+            </Header.Subheader>
+          </Header>
+          {profileItems}
+        </Segment>
       </Container>
     )
   }
