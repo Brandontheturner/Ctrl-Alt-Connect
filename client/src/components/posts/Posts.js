@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { Feed, Segment } from 'semantic-ui-react'
+import { Segment } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { getPosts } from '../../actions/postActions'
 import PostForm from './PostForm'
+import PostFeed from './PostFeed'
 
 class Posts extends Component {
   componentDidMount() {
@@ -10,19 +11,11 @@ class Posts extends Component {
   }
 
   render() {
-    const { posts, loading } = this.props.posts
-    let events = posts.map(post => ({
-      image: post.avatar,
-      summary: post.name,
-      meta: `${post.likes.length} Likes`,
-      extraText: post.text
-    }))
+    const { posts } = this.props.posts
     return (
       <Segment>
         <PostForm />
-        <Segment>
-          <Feed events={events} />
-        </Segment>
+        <PostFeed posts={posts} />
       </Segment>
     )
   }
