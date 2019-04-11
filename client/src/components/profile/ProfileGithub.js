@@ -31,17 +31,21 @@ class ProfileGithub extends Component {
     const { repos } = this.state
     return (
       <Segment>
+        <Header content="Latest Github Repositories" />
         <div ref="myRef">
           {repos.map(repo => (
             <Segment key={repo.id}>
               <Grid columns={2}>
                 <Grid.Column>
-                  <Header
-                    as={Link}
-                    to={repo.html_url}
-                    content={repo.name}
-                    subheader={repo.description}
-                  />
+                  <Header>
+                    <a
+                      href={repo.html_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {repo.name}
+                    </a>
+                  </Header>
                 </Grid.Column>
                 <Grid.Column>
                   <Label

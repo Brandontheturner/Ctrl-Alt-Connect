@@ -20,7 +20,7 @@ class ProfileCreds extends Component {
           })
         : [
             {
-              descrption: 'No experience listed'
+              description: 'No experience listed'
             }
           ]
     const educationItems =
