@@ -1,16 +1,8 @@
 const express = require('express')
 const router = express.Router()
-const mongoose = require('mongoose')
 const passport = require('passport')
 
 const posts = require('../../controllers/posts')
-
-// Load Input Validation
-const valiidatePostInput = require('../../validation/post')
-const validateCommentInput = require('../../validation/comment')
-// Load Post / Profile Model
-const Post = require('../../models/Post')
-const Profile = require('../../models/Profile')
 
 /***********************************
  *  @route  -->  GET api/posts/test

@@ -1,15 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const mongoose = require('mongoose')
 const passport = require('passport')
-
-// Load Input Validation
-const validateProfileInput = require('../../validation/profile')
-const validateExperienceInput = require('../../validation/experience')
-const validateEducationInput = require('../../validation/education')
-// Load Profile / User Models
-const Profile = require('../../models/Profile')
-const User = require('../../models/User')
 
 const profile = require('../../controllers/profile')
 
