@@ -9,7 +9,7 @@ import {
   Segment,
   Icon
 } from 'semantic-ui-react'
-import isEmpty from '../../validation/is-empty'
+import isEmpty from '../../utils/isEmpty'
 
 class ProfileItem extends Component {
   render() {

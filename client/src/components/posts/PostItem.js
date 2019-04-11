@@ -11,8 +11,7 @@ class PostItem extends Component {
   handleUnlikeClick = id => this.props.removeLike(id)
 
   render() {
-    const { post, auth } = this.props
-    console.log('TCL: PostItem -> render -> post', post)
+    const { post, auth, showActions } = this.props
     const likeButton = (
       <Button
         icon="heart outline"
@@ -34,7 +33,7 @@ class PostItem extends Component {
       <Item>
         <Item.Image src={post.avatar} circular size="tiny" />
         <Item.Content>
-          {post.user === auth.user.id && (
+          {post.user === auth.user.id && showActions && (
             <Button
               basic
               color="red"
@@ -49,19 +48,21 @@ class PostItem extends Component {
           <Item.Header>{post.name}</Item.Header>
           <Item.Meta>{`${post.likes.length} Likes`}</Item.Meta>
           <Item.Description>{post.text}</Item.Description>
-          <Item.Extra>
-            {/* CONDITIONAL RENDERING FOR LIKE BUTTON */}
-            {post.likes.find(item => item.user === auth.user.id)
-              ? unlikeButton
-              : likeButton}
-            <Button
-              as={Link}
-              to={`/post/${post._id}`}
-              primary
-              content="Comments"
-              compact
-            />
-          </Item.Extra>
+          {showActions && (
+            <Item.Extra>
+              {/* CONDITIONAL RENDERING FOR LIKE BUTTON */}
+              {post.likes.find(item => item.user === auth.user.id)
+                ? unlikeButton
+                : likeButton}
+              <Button
+                as={Link}
+                to={`/post/${post._id}`}
+                primary
+                content="Comments"
+                compact
+              />
+            </Item.Extra>
+          )}
         </Item.Content>
       </Item>
     )

@@ -17,7 +17,7 @@ import AccountSettings from './settings'
 import Profiles from './profiles/Profiles'
 import Profile from './profile/Profile'
 import Post from './posts/Post'
-import Posts from './posts/Posts'
+import PostFeed from './posts/PostFeed'
 import NotFound from './shared/pages/NotFound'
 import './App.css'
 
@@ -40,7 +40,7 @@ class App extends Component {
             <PrivateRoute path="/add-experience" component={AddExperience} />
             <PrivateRoute path="/add-education" component={AddEducation} />
             <PrivateRoute path="/settings" component={AccountSettings} />
-            <PrivateRoute path="/feed" component={Posts} />
+            <PrivateRoute path="/feed" component={PostFeed} />
             <PrivateRoute path="/post/:id" component={Post} />
           </Container>
           <Footer />

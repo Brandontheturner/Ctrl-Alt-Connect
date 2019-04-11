@@ -10,7 +10,7 @@ import {
   createProfile,
   getCurrentProfile
 } from '../../../actions/profileActions'
-import isEmpty from '../../../validation/is-empty'
+import isEmpty from '../../../utils/isEmpty'
 
 const options = [
   { text: 'Developer', value: 'Developer' },

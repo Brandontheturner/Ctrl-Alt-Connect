@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Header, Segment, Image, Icon, Container } from 'semantic-ui-react'
-import isEmpty from '../../validation/is-empty'
+import isEmpty from '../../utils/isEmpty'
 import './css/Profile.css'
 
 class ProfileHeader extends Component {
