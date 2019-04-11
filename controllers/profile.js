@@ -179,7 +179,6 @@ exports.deleteExperience = (req, res) => {
       const removeIndex = profile.experience
         .map(item => item.id)
         .indexOf(req.params.expId)
-      console.log(removeIndex)
       if (removeIndex > -1) {
         profile.experience.splice(removeIndex, 1)
         profile.save().then(profile => res.json(profile))
