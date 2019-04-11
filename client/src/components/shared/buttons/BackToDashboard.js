@@ -6,7 +6,7 @@ const GoBack = () => {
   return (
     <Button
       as={Link}
-      to="/dashboard"
+      to="/"
       content="Dashboard"
       icon="angle left"
       labelPosition="left"

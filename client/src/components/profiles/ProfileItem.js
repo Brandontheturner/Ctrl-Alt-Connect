@@ -42,7 +42,7 @@ class ProfileItem extends Component {
               content="View Profile"
             />
           </Grid.Column>
-          <Grid.Column width={4} only="computer tablet">
+          <Grid.Column width={4}>
             <Header as={'h2'}>Skill Set</Header>
             <List relaxed divided size="large">
               {profile.skills.slice(0, 4).map((skill, index) => (

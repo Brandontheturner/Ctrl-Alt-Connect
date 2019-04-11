@@ -16,6 +16,7 @@ import AddEducation from './dashboard/add-credentials/AddEducation'
 import AccountSettings from './settings'
 import Profiles from './profiles/Profiles'
 import Profile from './profile/Profile'
+import NotFound from './shared/pages/NotFound'
 import './App.css'
 
 class App extends Component {
@@ -30,6 +31,7 @@ class App extends Component {
             <Route path="/login" component={Login} />
             <Route path="/profiles" component={Profiles} />
             <Route path="/profile/:handle" component={Profile} />
+            <Route path="/not-found" component={NotFound} />
             <PrivateRoute path="/dashboard" component={Dashboard} />
             <PrivateRoute path="/create-profile" component={CreateProfile} />
             <PrivateRoute path="/edit-profile" component={EditProfile} />
