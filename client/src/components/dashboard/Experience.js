@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Table, Button, Header } from 'semantic-ui-react'
 import { deleteExperience } from '../../actions/profileActions'
-import Moment from 'react-moment'
+import formatDate from '../../utils/formatDate'
 
 class Experience extends Component {
   handleDeleteClick = id => this.props.deleteExperience(id)
@@ -27,12 +27,9 @@ class Experience extends Component {
                   <Table.Cell>{item.company}</Table.Cell>
                   <Table.Cell>{item.title}</Table.Cell>
                   <Table.Cell>
-                    <Moment format="YYYY/MM/DD">{item.from}</Moment> -
-                    {item.to === null ? (
-                      ' Now'
-                    ) : (
-                      <Moment format=" YYYY/MM/DD">{item.to}</Moment>
-                    )}
+                    {item.to === null
+                      ? `${formatDate(item.from)} - Now`
+                      : `${formatDate(item.from)} - ${formatDate(item.to)}`}
                   </Table.Cell>
                   <Table.Cell>
                     <Button

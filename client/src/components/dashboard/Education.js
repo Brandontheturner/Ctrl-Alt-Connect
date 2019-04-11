@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Table, Button, Header } from 'semantic-ui-react'
 import { deleteEducation } from '../../actions/profileActions'
-import Moment from 'react-moment'
+import formatDate from '../../utils/formatDate'
 
 class Education extends Component {
   handleDeleteClick = id => this.props.deleteEducation(id)
@@ -29,12 +29,9 @@ class Education extends Component {
                   <Table.Cell>{item.degree}</Table.Cell>
                   <Table.Cell>{item.fieldofstudy}</Table.Cell>
                   <Table.Cell>
-                    <Moment format="YYYY/MM/DD">{item.from}</Moment> -
-                    {item.to === null ? (
-                      ' Now'
-                    ) : (
-                      <Moment format=" YYYY/MM/DD">{item.to}</Moment>
-                    )}
+                    {item.to === null
+                      ? `${formatDate(item.from)} - Now`
+                      : `${formatDate(item.from)} - ${formatDate(item.to)}`}
                   </Table.Cell>
                   <Table.Cell>
                     <Button

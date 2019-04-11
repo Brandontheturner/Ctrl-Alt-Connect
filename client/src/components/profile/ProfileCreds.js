@@ -1,23 +1,46 @@
 import React, { Component } from 'react'
-import Moment from 'react-moment'
 import { Grid, Item, Header, Segment } from 'semantic-ui-react'
+import formatDate from '../../utils/formatDate'
 
 class ProfileCreds extends Component {
   render() {
     const { experience, education } = this.props
-    const experienceItems = experience.map(item => ({
-      childKey: item._id,
-      header: item.company,
-      meta: item.location === '' ? null : item.location,
-      extra: item.description === '' ? null : item.description
-    }))
-    const educationItems = education.map(item => ({
-      childKey: item._id,
-      header: item.school,
-      meta: item.degree,
-      description: item.fieldofstudy,
-      extra: item.description === '' ? null : item.description
-    }))
+    const experienceItems =
+      experience.length > 0
+        ? experience.map(item => {
+            item.from = formatDate(item.from)
+            item.to = item.to === null ? 'Now' : formatDate(item.to)
+            return {
+              childKey: item._id,
+              header: item.company,
+              meta: `${item.from} - ${item.to}`,
+              description: item.title,
+              extra: item.description === '' ? null : item.description
+            }
+          })
+        : [
+            {
+              descrption: 'No experience listed'
+            }
+          ]
+    const educationItems =
+      education.length > 0
+        ? education.map(item => {
+            item.from = formatDate(item.from)
+            item.to = item.to === null ? 'Now' : formatDate(item.to)
+            return {
+              childKey: item._id,
+              header: item.school,
+              meta: `${item.from} - ${item.to}`,
+              description: item.fieldofstudy,
+              extra: item.degree
+            }
+          })
+        : [
+            {
+              description: 'No education listed'
+            }
+          ]
     return (
       <Grid columns={2}>
         {/* EXPERIENCE */}
