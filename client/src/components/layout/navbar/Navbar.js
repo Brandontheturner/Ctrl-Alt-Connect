@@ -22,10 +22,16 @@ class Navbar extends Component {
           as={Link}
           to="/dashboard"
           name="dashboard"
+          content="Dashboard"
           onClick={this.handleItemClick}
-        >
-          Dashboard
-        </Menu.Item>
+        />
+        <Menu.Item
+          as={Link}
+          to="/feed"
+          name="feed"
+          content="Post Feed"
+          onClick={this.handleItemClick}
+        />
         <Menu.Item>
           <UserDropdown user={user} logout={this.handleLogoutClick} />
         </Menu.Item>

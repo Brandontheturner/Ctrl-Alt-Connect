@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import { Header, Grid, Label, Segment } from 'semantic-ui-react'
 
 class ProfileGithub extends Component {
