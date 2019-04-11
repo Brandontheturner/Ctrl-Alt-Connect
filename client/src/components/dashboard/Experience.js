@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Table, Button, Header } from 'semantic-ui-react'
+import { Table, Button, Header, Segment } from 'semantic-ui-react'
 import { deleteExperience } from '../../actions/profileActions'
 import formatDate from '../../utils/formatDate'
 
@@ -9,7 +9,7 @@ class Experience extends Component {
 
   render() {
     return (
-      <>
+      <Segment>
         <Header>Experience</Header>
         {this.props.experience.length ? (
           <Table basic="very" celled padded>
@@ -46,7 +46,7 @@ class Experience extends Component {
         ) : (
           'You currently have no experience credentials listed'
         )}
-      </>
+      </Segment>
     )
   }
 }

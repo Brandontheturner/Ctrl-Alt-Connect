@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
 import { Container, Form, Header, Segment } from 'semantic-ui-react'
 import { connect } from 'react-redux'
-import { addExperience } from '../../../actions/profileActions'
-import FormInput from '../../shared/form/FormInput'
-import FormTextArea from '../../shared/form/FormTextArea'
-import BackToDashboard from '../../shared/buttons/BackToDashboard'
+import { addEducation } from '../../../../actions/profileActions'
+import FormInput from '../../../shared/form/FormInput'
+import FormTextArea from '../../../shared/form/FormTextArea'
+import BackToDashboard from '../../../shared/buttons/BackToDashboard'
 
-class AddExperience extends Component {
+class AddEducation extends Component {
   state = {
-    company: '',
-    title: '',
-    location: '',
+    school: '',
+    degree: '',
+    fieldofstudy: '',
     description: '',
     from: '',
     to: '',
@@ -26,10 +26,10 @@ class AddExperience extends Component {
       current: !this.state.current
     })
   handleSubmit = () => {
-    this.props.addExperience({
-      company: this.state.company,
-      title: this.state.title,
-      location: this.state.location,
+    this.props.addEducation({
+      school: this.state.school,
+      degree: this.state.degree,
+      fieldofstudy: this.state.fieldofstudy,
       description: this.state.description,
       from: this.state.from,
       to: this.state.to,
@@ -45,45 +45,45 @@ class AddExperience extends Component {
     const { errors } = this.state
     return (
       <Container text className="">
+        <BackToDashboard />
         <Segment>
-          <BackToDashboard />
           <Header as="h1" textAlign="center">
-            Add Experience
+            Add Education
             <Header.Subheader>
-              Add any job or position that you have had in the past or present
+              Add any school, bootcamp, etc you have attended
             </Header.Subheader>
           </Header>
           <Form onSubmit={this.handleSubmit} error noValidate>
             <span>* = required fields</span>
-            <FormInput // Company
-              name="company"
+            <FormInput // School
+              name="school"
               type="text"
-              placeholder="* Company"
-              value={this.state.company}
+              placeholder="* School"
+              value={this.state.school}
               onChange={this.handleChange}
-              error={errors.company}
+              error={errors.school}
             />
-            <FormInput // Title
-              name="title"
+            <FormInput // degree
+              name="degree"
               type="text"
-              placeholder="* Job Title"
-              value={this.state.title}
+              placeholder="* Degree"
+              value={this.state.degree}
               onChange={this.handleChange}
-              error={errors.title}
+              error={errors.degree}
             />
-            <FormInput // Location
-              name="location"
+            <FormInput // Field of study
+              name="fieldofstudy"
               type="text"
-              placeholder="Location"
-              value={this.state.location}
+              placeholder="* Field of Study"
+              value={this.state.fieldofstudy}
               onChange={this.handleChange}
-              error={errors.location}
+              error={errors.fieldofstudy}
             />
             <FormInput // From Date
               name="from"
               type="date"
               value={this.state.from}
-              label="From Date"
+              label="* From Date"
               onChange={this.handleChange}
               error={errors.from}
             />
@@ -96,14 +96,11 @@ class AddExperience extends Component {
               error={errors.to}
               disabled={this.state.disabled}
             />
-            <Form.Checkbox
-              onClick={this.handleCheckboxClick}
-              label="Current Job"
-            />
-            <FormTextArea // Job Description
+            <Form.Checkbox onClick={this.handleCheckboxClick} label="Current" />
+            <FormTextArea // Description
               name="description"
-              placeholder="Job Description"
-              info="Tell us about the position"
+              placeholder="Program Description"
+              info="Tell us about the program you were in"
               value={this.state.description}
               onChange={this.handleChange}
               error={errors.description}
@@ -121,5 +118,5 @@ const mapStateToProps = ({ profile, errors }) => ({ profile, errors })
 
 export default connect(
   mapStateToProps,
-  { addExperience }
-)(AddExperience)
+  { addEducation }
+)(AddEducation)

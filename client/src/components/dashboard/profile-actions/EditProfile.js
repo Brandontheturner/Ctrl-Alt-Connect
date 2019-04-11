@@ -109,8 +109,8 @@ class EditProfile extends Component {
 
     return (
       <Container text>
+        <BackToDashboard />
         <Segment>
-          <BackToDashboard />
           <Header as="h1" textAlign="center">
             Edit Profile
           </Header>

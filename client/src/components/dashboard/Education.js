@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Table, Button, Header } from 'semantic-ui-react'
+import { Table, Button, Header, Segment } from 'semantic-ui-react'
 import { deleteEducation } from '../../actions/profileActions'
 import formatDate from '../../utils/formatDate'
 
@@ -9,7 +9,7 @@ class Education extends Component {
 
   render() {
     return (
-      <>
+      <Segment>
         <Header>Education</Header>
         {this.props.education.length ? (
           <Table basic="very" celled>
@@ -48,7 +48,7 @@ class Education extends Component {
         ) : (
           'You currently have no education credentials listed'
         )}
-      </>
+      </Segment>
     )
   }
 }

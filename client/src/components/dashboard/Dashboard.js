@@ -25,7 +25,7 @@ class Dashboard extends Component {
       if (Object.keys(profile).length > 0) {
         dashboardContent = (
           <>
-            <Header as={'h4'}>
+            <Header>
               Welcome <Link to={`/profile/${profile.handle}`}>{user.name}</Link>
               !
             </Header>
@@ -54,7 +54,7 @@ class Dashboard extends Component {
 
     return (
       <Segment loading={profile === null || loading}>
-        <Header as={'h1'}>Dashboard</Header>
+        <Header as={'h1'} content="Dashboard" />
         {dashboardContent}
       </Segment>
     )
