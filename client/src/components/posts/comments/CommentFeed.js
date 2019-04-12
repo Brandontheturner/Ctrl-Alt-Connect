@@ -5,8 +5,7 @@ import CommentItem from './CommentItem'
 class CommentFeed extends Component {
   render() {
     const { comments, postId } = this.props
-    console.log('TCL: CommentFeed -> render -> comments', comments)
-    return (
+    return comments.length > 0 ? (
       <Segment>
         <Item.Group divided>
           {comments.map(comment => (
@@ -14,6 +13,8 @@ class CommentFeed extends Component {
           ))}
         </Item.Group>
       </Segment>
+    ) : (
+      <Segment>Be the first to comment!</Segment>
     )
   }
 }

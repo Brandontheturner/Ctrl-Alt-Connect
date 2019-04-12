@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Container, Item, Header, Segment } from 'semantic-ui-react'
 import { getProfiles } from '../../actions/profileActions'
 import ProfileItem from './ProfileItem'
+import PageHeader from '../shared/pages/PageHeader'
 
 class Profiles extends Component {
   componentDidMount() {
@@ -31,15 +32,11 @@ class Profiles extends Component {
 
     return (
       <Container>
-        <Header
-          as="h1"
-          textAlign="center"
+        <PageHeader
           content="Developer Profiles"
           subheader="Browse and connect with other developers!"
-          attached="top"
-          inverted
         />
-        <Segment attached loading={profiles === null || loading}>
+        <Segment attached="bottom" loading={profiles === null || loading}>
           {profileItems}
         </Segment>
       </Container>

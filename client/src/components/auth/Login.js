@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Form, Container, Divider, Header, Segment } from 'semantic-ui-react'
+import { Form, Container, Divider, Segment } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { loginUser } from '../../actions/authActions'
 import FormInput from '../shared/form/FormInput'
+import FormHeader from '../shared/form/FormHeader'
 
 class Login extends Component {
   state = {
@@ -34,15 +35,11 @@ class Login extends Component {
     const { errors } = this.state
     return (
       <Container text>
-        <Header
-          as="h1"
-          textAlign="center"
+        <FormHeader
           content="Login"
           subheader="Sign in to your Ctrl+Alt+Connect account"
-          inverted
-          attached="top"
         />
-        <Segment attached>
+        <Segment attached="bottom">
           <Form onSubmit={this.handleSubmit} error noValidate>
             <FormInput
               name="email"

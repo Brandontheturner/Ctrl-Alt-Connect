@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Table, Button, Header, Segment } from 'semantic-ui-react'
+import { Table, Header, Segment } from 'semantic-ui-react'
 import { deleteExperience } from '../../actions/profileActions'
 import TrashButton from '../shared/buttons/TrashButton'
 import formatDate from '../../utils/formatDate'
@@ -11,8 +11,8 @@ class Experience extends Component {
   render() {
     return (
       <>
-        <Header attached="top">Experience</Header>
-        <Segment attached>
+        <Header inverted attached="top" content="Experience" />
+        <Segment attached="bottom">
           {this.props.experience.length ? (
             <Table basic celled padded>
               <Table.Header>

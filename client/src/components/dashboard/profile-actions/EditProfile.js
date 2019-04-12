@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Container, Form, Header, Segment } from 'semantic-ui-react'
+import { Container, Form, Segment } from 'semantic-ui-react'
+import FormHeader from '../../shared/form/FormHeader'
 import FormInput from '../../shared/form/FormInput'
 import FormInputWithIcon from '../../shared/form/FormInputWithIcon'
 import FormSelect from '../../shared/form/FormSelect'
@@ -110,15 +111,11 @@ class EditProfile extends Component {
     return (
       <Container text>
         <BackToDashboard />
-        <Header
-          as="h1"
-          textAlign="center"
+        <FormHeader
           content="Edit Profile"
           subheader="Update or add on to your existing profile"
-          attached="top"
-          inverted
         />
-        <Segment attached>
+        <Segment attached="bottom">
           <Form onSubmit={this.handleSubmit} error noValidate>
             <span>* = required fields</span>
             <FormInput // Handle

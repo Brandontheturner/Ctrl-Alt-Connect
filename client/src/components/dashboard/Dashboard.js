@@ -6,6 +6,7 @@ import { getCurrentProfile } from '../../actions/profileActions'
 import ProfileControl from './ProfileControl'
 import Experience from './Experience'
 import Education from './Education'
+import PageHeader from '../shared/pages/PageHeader'
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -54,8 +55,8 @@ class Dashboard extends Component {
 
     return (
       <>
-        <Header as={'h1'} content="Dashboard" attached="top" inverted />
-        <Segment attached loading={profile === null || loading}>
+        <PageHeader content="Dashboard" />
+        <Segment attached="bottom" loading={profile === null || loading}>
           {dashboardContent}
         </Segment>
       </>

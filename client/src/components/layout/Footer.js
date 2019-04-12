@@ -4,7 +4,7 @@ import { Segment } from 'semantic-ui-react'
 const Footer = () => {
   return (
     <div>
-      <Segment attached inverted textAlign="center">
+      <Segment attached="bottom" inverted textAlign="center">
         Copyright &copy; {new Date().getFullYear()} My App
       </Segment>
     </div>

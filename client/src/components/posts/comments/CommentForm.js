@@ -28,19 +28,21 @@ class CommentForm extends Component {
 
   render() {
     return (
-      <Segment>
-        <Header content="Post a Comment" />
-        <Form onSubmit={this.handleSubmit} error>
-          <FormTextArea
-            name="text"
-            placeholder="Share your thoughts..."
-            value={this.state.text}
-            onChange={this.handleChange}
-            error={this.state.errors.text}
-          />
-          <Form.Button primary type="submit" content="Submit" />
-        </Form>
-      </Segment>
+      <>
+        <Header content="Post a Comment" attached="top" inverted />
+        <Segment attached="bottom">
+          <Form onSubmit={this.handleSubmit} error>
+            <FormTextArea
+              name="text"
+              placeholder="Share your thoughts..."
+              value={this.state.text}
+              onChange={this.handleChange}
+              error={this.state.errors.text}
+            />
+            <Form.Button primary type="submit" content="Submit" />
+          </Form>
+        </Segment>
+      </>
     )
   }
 }

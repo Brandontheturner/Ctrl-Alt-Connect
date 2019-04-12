@@ -27,19 +27,21 @@ class PostForm extends Component {
 
   render() {
     return (
-      <Segment>
-        <Header content="Create Post" />
-        <Form onSubmit={this.handleSubmit} error>
-          <FormTextArea
-            name="text"
-            placeholder="Say something..."
-            value={this.state.text}
-            onChange={this.handleChange}
-            error={this.state.errors.text}
-          />
-          <Form.Button primary type="submit" content="Submit" />
-        </Form>
-      </Segment>
+      <>
+        <Header content="Create a Post" attached="top" inverted />
+        <Segment attached="bottom">
+          <Form onSubmit={this.handleSubmit} error>
+            <FormTextArea
+              name="text"
+              placeholder="Say something..."
+              value={this.state.text}
+              onChange={this.handleChange}
+              error={this.state.errors.text}
+            />
+            <Form.Button primary type="submit" content="Submit" />
+          </Form>
+        </Segment>
+      </>
     )
   }
 }

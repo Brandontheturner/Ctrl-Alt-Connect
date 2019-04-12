@@ -6,28 +6,32 @@ import isEmpty from '../../utils/isEmpty'
 import PostItem from './PostItem'
 import CommentForm from './comments/CommentForm'
 import CommentFeed from './comments/CommentFeed'
+import PageHeader from '../shared/pages/PageHeader'
 import BackToFeed from '../shared/buttons/BackToFeed'
 
 class Post extends Component {
   componentDidMount() {
-    console.log(this.props.match.params.id)
     this.props.getPost(this.props.match.params.id)
   }
 
   render() {
     const { post, loading } = this.props.posts
+
     return (
       <>
         <BackToFeed />
-        <Segment loading={post === null || loading}>
-          <Item.Group>
-            {!isEmpty(post) && <PostItem post={post} showActions={false} />}
-          </Item.Group>
-          <CommentForm postId={post._id} />
-          {!isEmpty(post) && (
-            <CommentFeed postId={post._id} comments={post.comments} />
-          )}
-        </Segment>
+        {!isEmpty(post) && (
+          <>
+            <PageHeader content={`${post.name.split(' ')[0]}'s Post`} />
+            <Segment attached="bottom" loading={post === null || loading}>
+              <Item.Group>
+                <PostItem post={post} showActions={false} />
+              </Item.Group>
+              <CommentForm postId={post._id} />
+              <CommentFeed comments={post.comments} />
+            </Segment>
+          </>
+        )}
       </>
     )
   }

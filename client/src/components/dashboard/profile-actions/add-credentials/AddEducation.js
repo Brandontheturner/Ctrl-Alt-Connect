@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import { Container, Form, Header, Segment } from 'semantic-ui-react'
+import { Container, Form, Segment } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { addEducation } from '../../../../actions/profileActions'
 import FormInput from '../../../shared/form/FormInput'
 import FormTextArea from '../../../shared/form/FormTextArea'
 import BackToDashboard from '../../../shared/buttons/BackToDashboard'
+import FormHeader from '../../../shared/form/FormHeader'
 
 class AddEducation extends Component {
   state = {
@@ -46,13 +47,11 @@ class AddEducation extends Component {
     return (
       <Container text className="">
         <BackToDashboard />
-        <Segment>
-          <Header as="h1" textAlign="center">
-            Add Education
-            <Header.Subheader>
-              Add any school, bootcamp, etc you have attended
-            </Header.Subheader>
-          </Header>
+        <FormHeader
+          content="Add Education"
+          subheader="Add any school, bootcamp, etc you have attended"
+        />
+        <Segment attached="bottom">
           <Form onSubmit={this.handleSubmit} error noValidate>
             <span>* = required fields</span>
             <FormInput // School

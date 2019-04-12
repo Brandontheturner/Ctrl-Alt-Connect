@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Container, Form, Header, Segment } from 'semantic-ui-react'
+import { Container, Form, Segment } from 'semantic-ui-react'
+import { createProfile } from '../../../actions/profileActions'
+import FormHeader from '../../shared/form/FormHeader'
 import FormInput from '../../shared/form/FormInput'
 import FormInputWithIcon from '../../shared/form/FormInputWithIcon'
 import FormSelect from '../../shared/form/FormSelect'
 import FormTextArea from '../../shared/form/FormTextArea'
-import { createProfile } from '../../../actions/profileActions'
 
 const options = [
   { text: 'Developer', value: 'Developer' },
@@ -67,15 +68,11 @@ class CreateProfile extends Component {
 
     return (
       <Container text>
-        <Header
-          as="h1"
-          textAlign="center"
+        <FormHeader
           content="Create Profile"
           subheader="Let's get some information to make your profile stand out"
-          attached="top"
-          inverted
         />
-        <Segment attached>
+        <Segment attached="bottom">
           <Form onSubmit={this.handleSubmit} error noValidate>
             <span>* = required fields</span>
             <FormInput // Handle
