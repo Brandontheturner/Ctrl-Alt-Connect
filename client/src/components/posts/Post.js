@@ -28,7 +28,7 @@ class Post extends Component {
                 <PostItem post={post} showActions={false} />
               </Item.Group>
               <CommentForm postId={post._id} />
-              <CommentFeed comments={post.comments} />
+              <CommentFeed comments={post.comments} postId={post._id} />
             </Segment>
           </>
         )}

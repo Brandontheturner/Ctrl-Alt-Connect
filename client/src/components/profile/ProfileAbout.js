@@ -9,30 +9,26 @@ class ProfileAbout extends Component {
     const firstName = profile.user.name.split(' ')[0]
 
     return (
-      <Segment>
-        <Segment vertical>
-          <Header
-            size="large"
-            color="blue"
-            textAlign="center"
-            content={`${firstName}'s Bio`}
-          />
+      <>
+        <Header
+          content={`About ${firstName}`}
+          color="blue"
+          textAlign="center"
+          size="large"
+        />
+        <Header content="Bio" attached="top" inverted />
+        <Segment attached="bottom">
           <Header.Subheader
             content={
               isEmpty(profile.bio)
                 ? `${firstName} does not have a bio yet`
                 : profile.bio
             }
-            className="profile-bio"
           />
         </Segment>
-        <Segment vertical>
-          <Header
-            size="large"
-            color="blue"
-            textAlign="center"
-            content={`Skill Set`}
-          />
+
+        <Header content="Skill Set" attached="top" inverted />
+        <Segment attached="bottom">
           <List horizontal relaxed divided>
             {profile.skills.map((skill, index) => (
               <List.Item key={index}>
@@ -41,7 +37,7 @@ class ProfileAbout extends Component {
             ))}
           </List>
         </Segment>
-      </Segment>
+      </>
     )
   }
 }

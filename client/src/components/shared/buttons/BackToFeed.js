@@ -7,7 +7,7 @@ const GoBack = () => {
     <Button
       as={Link}
       to="/feed"
-      content="All Posts"
+      content="Feed"
       icon="angle left"
       labelPosition="left"
       compact

@@ -45,16 +45,16 @@ class ProfileCreds extends Component {
       <Grid columns={2}>
         {/* EXPERIENCE */}
         <Grid.Column>
-          <Header content="Experience" color="blue" textAlign="center" />
-          <Segment>
+          <Header content="Experience" inverted attached="top" />
+          <Segment attached="bottom">
             <Item.Group relaxed divided items={experienceItems} />
           </Segment>
         </Grid.Column>
 
         {/* EDUCATION */}
         <Grid.Column>
-          <Header content="Education" color="blue" textAlign="center" />
-          <Segment>
+          <Header content="Education" inverted attached="top" />
+          <Segment attached="bottom">
             <Item.Group relaxed divided items={educationItems} />
           </Segment>
         </Grid.Column>

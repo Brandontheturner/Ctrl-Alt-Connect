@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import { Header, Grid, Label, Segment } from 'semantic-ui-react'
+import { Header, Label, Segment, List } from 'semantic-ui-react'
 
 class ProfileGithub extends Component {
   state = {
-    clientId: '494e090bb85e49db5090',
-    clientSecret: 'f15641da523f52ff7e6c8ff21abaece872d2a972',
+    clientId: 'e906c713c0f8cc8b22a0',
+    clientSecret: '35ade58c71dc940de67c50a2dca7b7e7d981edf1',
     count: 5,
     sort: 'created: asc',
     repos: []
@@ -29,14 +29,14 @@ class ProfileGithub extends Component {
   render() {
     const { repos } = this.state
     return (
-      <Segment>
-        <Header content="Latest Github Repositories" />
-        <div ref="myRef">
-          {repos.map(repo => (
-            <Segment key={repo.id}>
-              <Grid columns={2}>
-                <Grid.Column>
-                  <Header>
+      <>
+        <Header content="Latest Github Repositories" inverted attached="top" />
+        <Segment attached="bottom">
+          <List relaxed divided ref="myRef">
+            {repos.map(repo => (
+              <List.Item key={repo.id}>
+                <List.Content>
+                  <List.Header>
                     <a
                       href={repo.html_url}
                       target="_blank"
@@ -44,34 +44,36 @@ class ProfileGithub extends Component {
                     >
                       {repo.name}
                     </a>
-                  </Header>
-                </Grid.Column>
-                <Grid.Column>
-                  <Label
-                    content="Watchers"
-                    detail={repo.watchers_count}
-                    icon="eye"
-                    color="blue"
-                  />
-                  <Label
-                    content="Stars"
-                    detail={repo.stargazers_count}
-                    icon="star"
-                    color="grey"
-                  />
+                  </List.Header>
+                </List.Content>
+                <List horizontal floated="right">
+                  <Label.Group circular>
+                    <Label
+                      content="Watchers"
+                      detail={repo.watchers_count}
+                      icon="eye"
+                      color="blue"
+                    />
+                    <Label
+                      content="Stars"
+                      detail={repo.stargazers_count}
+                      icon="star"
+                      color="grey"
+                    />
 
-                  <Label
-                    content="Forks"
-                    detail={repo.forks_count}
-                    icon="fork"
-                    color="green"
-                  />
-                </Grid.Column>
-              </Grid>
-            </Segment>
-          ))}
-        </div>
-      </Segment>
+                    <Label
+                      content="Forks"
+                      detail={repo.forks_count}
+                      icon="fork"
+                      color="green"
+                    />
+                  </Label.Group>
+                </List>
+              </List.Item>
+            ))}
+          </List>
+        </Segment>
+      </>
     )
   }
 }

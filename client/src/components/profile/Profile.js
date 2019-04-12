@@ -36,7 +36,9 @@ class Profile extends Component {
             experience={profile.experience}
             education={profile.education}
           />
-          {profile.githubusername && <ProfileGithub profile={profile} />}
+          {profile.githubusername && (
+            <ProfileGithub username={profile.githubusername} />
+          )}
         </>
       )
     }
@@ -44,7 +46,7 @@ class Profile extends Component {
     return (
       <Container>
         <BackToDevelopers />
-        <Segment basic loading={profile === null || loading}>
+        <Segment loading={profile === null || loading}>
           {profileContent}
         </Segment>
       </Container>

@@ -21,7 +21,7 @@ class Posts extends Component {
         />
         <Segment attached="bottom">
           <PostForm />
-          <Segment loading={posts === null || loading}>
+          <Segment basic loading={posts === null || loading}>
             <Item.Group divided>
               {posts.map(post => (
                 <PostItem key={post._id} post={post} showActions={true} />
