@@ -37,7 +37,7 @@ class Register extends Component {
           as="h1"
           textAlign="center"
           content="Sign Up"
-          subheader="Register an account with DevConnector"
+          subheader="Register an account with Ctrl+Alt+Connect"
           inverted
           attached="top"
         />

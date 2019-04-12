@@ -1,5 +1,5 @@
 {
-  "name": "devconnector",
+  "name": "Ctrl+Alt+Connect",
   "version": "1.0.0",
   "description": "Social network for developers",
   "main": "server.js",
@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/andyols/devconnector.git"
+    "url": "git+https://github.com/andyols/Ctrl+Alt+Connect.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/andyols/devconnector/issues"
+    "url": "https://github.com/andyols/Ctrl+Alt+Connect/issues"
   },
-  "homepage": "https://github.com/andyols/devconnector#readme",
+  "homepage": "https://github.com/andyols/Ctrl+Alt+Connect#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",

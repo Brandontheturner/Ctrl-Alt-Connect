@@ -69,7 +69,7 @@ class Navbar extends Component {
             name="home"
             onClick={this.handleItemClick}
           >
-            CtrlAltConnect
+            Ctrl+Alt+Connect
           </Menu.Item>
 
           <Menu.Item

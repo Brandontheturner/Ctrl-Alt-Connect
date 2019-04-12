@@ -38,7 +38,7 @@ class Login extends Component {
           as="h1"
           textAlign="center"
           content="Login"
-          subheader="Sign in to your DevConnector account"
+          subheader="Sign in to your Ctrl+Alt+Connect account"
           inverted
           attached="top"
         />
