@@ -10,6 +10,7 @@ const GoBack = () => {
       content="All Developers"
       icon="angle left"
       labelPosition="left"
+      basic
       compact
     />
   )

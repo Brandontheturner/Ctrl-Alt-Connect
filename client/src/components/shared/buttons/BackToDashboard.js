@@ -10,6 +10,7 @@ const GoBack = () => {
       content="Dashboard"
       icon="angle left"
       labelPosition="left"
+      basic
       compact
     />
   )

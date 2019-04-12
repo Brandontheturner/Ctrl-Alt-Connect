@@ -67,13 +67,15 @@ class CreateProfile extends Component {
 
     return (
       <Container text>
-        <Segment>
-          <Header as="h1" textAlign="center">
-            Create Profile
-            <Header.Subheader>
-              Let's get some information to make your profile stand out
-            </Header.Subheader>
-          </Header>
+        <Header
+          as="h1"
+          textAlign="center"
+          content="Create Profile"
+          subheader="Let's get some information to make your profile stand out"
+          attached="top"
+          inverted
+        />
+        <Segment attached>
           <Form onSubmit={this.handleSubmit} error noValidate>
             <span>* = required fields</span>
             <FormInput // Handle

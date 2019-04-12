@@ -1,32 +1,23 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Button } from 'semantic-ui-react'
+import { Button, Icon } from 'semantic-ui-react'
 
 const ProfileControl = () => {
   return (
     <>
-      <Button.Group>
-        <Button
-          as={Link}
-          to="/edit-profile"
-          content="Edit Profile"
-          icon="user circle"
-          labelPosition="left"
-        />
-        <Button
-          as={Link}
-          to="/add-experience"
-          content="Add Experience"
-          icon="briefcase"
-          labelPosition="left"
-        />
-        <Button
-          as={Link}
-          to="/add-education"
-          content="Add Education"
-          icon="graduation cap"
-          labelPosition="left"
-        />
+      <Button.Group basic>
+        <Button as={Link} to="/edit-profile" icon labelPosition="left">
+          <Icon name="user" color="blue" />
+          Edit Profile
+        </Button>
+        <Button as={Link} to="/add-experience" icon labelPosition="left">
+          <Icon name="briefcase" color="blue" />
+          Add Experience
+        </Button>
+        <Button as={Link} to="/add-education" icon labelPosition="left">
+          <Icon name="graduation" color="blue" />
+          Add Education
+        </Button>
       </Button.Group>
       {/* TODO EXP & EDU SECTIONS */}
     </>

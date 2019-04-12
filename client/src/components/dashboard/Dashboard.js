@@ -53,10 +53,12 @@ class Dashboard extends Component {
     }
 
     return (
-      <Segment loading={profile === null || loading}>
-        <Header as={'h1'} content="Dashboard" />
-        {dashboardContent}
-      </Segment>
+      <>
+        <Header as={'h1'} content="Dashboard" attached="top" inverted />
+        <Segment attached loading={profile === null || loading}>
+          {dashboardContent}
+        </Segment>
+      </>
     )
   }
 }

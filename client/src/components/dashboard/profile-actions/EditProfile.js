@@ -110,10 +110,15 @@ class EditProfile extends Component {
     return (
       <Container text>
         <BackToDashboard />
-        <Segment>
-          <Header as="h1" textAlign="center">
-            Edit Profile
-          </Header>
+        <Header
+          as="h1"
+          textAlign="center"
+          content="Edit Profile"
+          subheader="Update or add on to your existing profile"
+          attached="top"
+          inverted
+        />
+        <Segment attached>
           <Form onSubmit={this.handleSubmit} error noValidate>
             <span>* = required fields</span>
             <FormInput // Handle

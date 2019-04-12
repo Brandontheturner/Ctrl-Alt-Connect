@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { registerUser } from '../../actions/authActions'
-import { Form, Container, Header, Segment } from 'semantic-ui-react'
+import { Form, Container, Header, Segment, Divider } from 'semantic-ui-react'
 import FormInput from '../shared/form/FormInput'
 
 class Register extends Component {
@@ -32,13 +33,15 @@ class Register extends Component {
     const { errors } = this.state
     return (
       <Container text>
-        <Segment>
-          <Header as="h1" textAlign="center">
-            Sign Up
-            <Header.Subheader>
-              Create your DevConnector account
-            </Header.Subheader>
-          </Header>
+        <Header
+          as="h1"
+          textAlign="center"
+          content="Sign Up"
+          subheader="Register an account with DevConnector"
+          inverted
+          attached="top"
+        />
+        <Segment attached>
           <Form onSubmit={this.handleSubmit} error noValidate>
             <FormInput
               name="name"
@@ -78,6 +81,14 @@ class Register extends Component {
             />
             <Form.Button fluid primary content="Submit" type="submit" />
           </Form>
+          <Divider />
+          <span>
+            Already have an account?
+            <Link to="/login" style={{ fontWeight: 'bold' }}>
+              {' '}
+              Log In
+            </Link>
+          </span>
         </Segment>
       </Container>
     )
