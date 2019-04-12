@@ -198,7 +198,6 @@ exports.deleteEducation = (req, res) => {
       const removeIndex = profile.education
         .map(item => item.id)
         .indexOf(req.params.eduId)
-      console.log(removeIndex)
       if (removeIndex > -1) {
         profile.education.splice(removeIndex, 1)
         profile.save().then(profile => res.json(profile))
