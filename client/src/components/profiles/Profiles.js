@@ -18,7 +18,7 @@ class Profiles extends Component {
     } else {
       if (profiles.length) {
         profileItems = (
-          <Item.Group>
+          <Item.Group divided>
             {profiles.map(profile => (
               <ProfileItem key={profile._id} profile={profile} />
             ))}
@@ -31,13 +31,15 @@ class Profiles extends Component {
 
     return (
       <Container>
-        <Segment loading={profiles === null || loading}>
-          <Header as="h1" textAlign="center">
-            Developer Profiles
-            <Header.Subheader>
-              Browse and connect with other developers!
-            </Header.Subheader>
-          </Header>
+        <Header
+          as="h1"
+          textAlign="center"
+          content="Developer Profiles"
+          subheader="Browse and connect with other developers!"
+          attached="top"
+          inverted
+        />
+        <Segment attached loading={profiles === null || loading}>
           {profileItems}
         </Segment>
       </Container>
