@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Header, Segment } from 'semantic-ui-react'
 import { getCurrentProfile } from '../../actions/profileActions'
+import PageHeader from '../shared/pages/PageHeader'
 import DeleteAccountButton from './DeleteAccountButton'
 
 class Dashboard extends Component {
@@ -13,10 +14,15 @@ class Dashboard extends Component {
     const { profile, loading } = this.props.profile
 
     return (
-      <Segment loading={profile === null || loading}>
-        <Header as={'h1'}>Account Settings</Header>
-        <DeleteAccountButton />
-      </Segment>
+      <>
+        <PageHeader content="Account Settings" />
+        <Segment attached="bottom" loading={profile === null || loading}>
+          <Header content="Danger Zone" attached="top" inverted />
+          <Segment attached="bottom">
+            <DeleteAccountButton />
+          </Segment>
+        </Segment>
+      </>
     )
   }
 }
