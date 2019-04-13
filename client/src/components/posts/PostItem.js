@@ -22,7 +22,6 @@ class PostItem extends Component {
             <DeleteButton deleteItem={() => this.handleDeleteClick(post._id)} />
           )}
           <Item.Header>{post.name}</Item.Header>
-          <Item.Meta>{`${post.likes.length} Likes`}</Item.Meta>
           <Item.Description>{post.text}</Item.Description>
           {showActions && (
             <Item.Extra>
