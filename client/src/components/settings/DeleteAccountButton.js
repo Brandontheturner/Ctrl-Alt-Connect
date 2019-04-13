@@ -17,17 +17,22 @@ class DeleteAccountButton extends Component {
     }
 
     return (
-      <div>
-        <Button negative content="Delete Account" onClick={this.show} />
+      <>
+        <Button compact negative content="Delete Account" onClick={this.show} />
         <Confirm
           open={open}
+          header="Delete Account"
           content="Are you sure you want to delete your account? This CANNOT be undone!"
-          cancelButton="Never Mind"
-          confirmButton="Confirm"
+          cancelButton={{ content: 'Never mind', compact: true }}
+          confirmButton={{
+            content: 'Yes, delete my account',
+            compact: true,
+            negative: true
+          }}
           onCancel={this.handleCancel}
           onConfirm={this.handleConfirm}
         />
-      </div>
+      </>
     )
   }
 }

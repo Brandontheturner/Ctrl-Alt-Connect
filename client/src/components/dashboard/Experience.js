@@ -35,8 +35,7 @@ class Experience extends Component {
                     </Table.Cell>
                     <Table.Cell>
                       <TrashButton
-                        size="tiny"
-                        handleClick={() => this.handleDeleteClick(item._id)}
+                        action={() => this.handleDeleteClick(item._id)}
                       />
                     </Table.Cell>
                   </Table.Row>

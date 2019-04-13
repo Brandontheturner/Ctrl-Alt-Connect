@@ -29,7 +29,8 @@ class CommentItem extends Component {
         <Item.Content>
           {comment.user === auth.user.id && (
             <TrashButton
-              handleClick={() => this.handleDeleteClick(postId, comment._id)}
+              item="Comment"
+              action={() => this.handleDeleteClick(postId, comment._id)}
             />
           )}
           <Item.Header>{comment.name}</Item.Header>

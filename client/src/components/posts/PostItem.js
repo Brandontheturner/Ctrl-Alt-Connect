@@ -20,7 +20,10 @@ class PostItem extends Component {
         <ProfileImage to={`/profile/user/${post.user}`} src={post.avatar} />
         <Item.Content>
           {post.user === auth.user.id && showActions && (
-            <TrashButton handleClick={() => this.handleDeleteClick(post._id)} />
+            <TrashButton
+              item="Post"
+              action={() => this.handleDeleteClick(post._id)}
+            />
           )}
           <Item.Header>{post.name}</Item.Header>
           <Item.Description>{post.text}</Item.Description>
@@ -35,7 +38,7 @@ class PostItem extends Component {
                 as={Link}
                 to={`/post/${post._id}`}
                 primary
-                content="Comments"
+                content={`Comments ${post.comments.length}`}
                 compact
               />
             </Item.Extra>
