@@ -26,10 +26,13 @@ class Dashboard extends Component {
       if (Object.keys(profile).length > 0) {
         dashboardContent = (
           <>
-            <Header>
-              Welcome <Link to={`/profile/${profile.handle}`}>{user.name}</Link>
-              !
-            </Header>
+            <Header
+              as={Link}
+              to={`/profile/handle/${profile.handle}`}
+              content={`Welcome ${user.name}!`}
+              color="blue"
+              subheader="Click your name to view your profile or any of the buttons below to edit it"
+            />
             <ProfileControl />
             <Experience experience={profile.experience} />
             <Education education={profile.education} />
@@ -38,13 +41,11 @@ class Dashboard extends Component {
       } else {
         dashboardContent = (
           <>
-            <Header as={'h4'}>
-              Welcome {user.name}!
-              <Header.Subheader>
-                You have not yet setup a profile, click the button below to
-                share some info!
-              </Header.Subheader>
-            </Header>
+            <Header
+              content={`Welcome ${user.name}!`}
+              subheader="You have not yet setup a profile, click the button below to
+                share some info!"
+            />
             <Button primary as={Link} to="/create-profile">
               Create Profile
             </Button>

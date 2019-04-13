@@ -30,10 +30,10 @@ router.get('/all', profile.getAll)
  *  @desc   -->  Get a profile by handle
  *  @access -->  Public
  */
-router.get('/:handle', profile.getByHandle)
+router.get('/handle/:handle', profile.getByHandle)
 
 /***********************************************
- *  @route  -->  GET api/profile/uder/:userId
+ *  @route  -->  GET api/profile/user/:userId
  *  @desc   -->  Get a profile by userId
  *  @access -->  Public
  */

@@ -18,7 +18,14 @@ export const getCurrentProfile = () => dispatch => {
 
 export const getProfileByHandle = handle => dispatch => {
   dispatch(setProfileLoding())
-  db.get(`/profile/${handle}`)
+  db.get(`/profile/handle/${handle}`)
+    .then(res => dispatch({ type: GET_PROFILE, payload: res.data }))
+    .catch(err => dispatch({ type: GET_PROFILE, payload: null }))
+}
+
+export const getProfileByUserId = userId => dispatch => {
+  dispatch(setProfileLoding())
+  db.get(`/profile/user/${userId}`)
     .then(res => dispatch({ type: GET_PROFILE, payload: res.data }))
     .catch(err => dispatch({ type: GET_PROFILE, payload: null }))
 }

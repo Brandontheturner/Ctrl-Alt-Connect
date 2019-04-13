@@ -32,7 +32,8 @@ class App extends Component {
             <Route path="/register" component={Register} />
             <Route path="/login" component={Login} />
             <Route path="/profiles" component={Profiles} />
-            <Route path="/profile/:handle" component={Profile} />
+            <Route path="/profile/handle/:handle" component={Profile} />
+            <Route path="/profile/user/:userId" component={Profile} />
             <Route path="/not-found" component={NotFound} />
             <PrivateRoute path="/dashboard" component={Dashboard} />
             <PrivateRoute path="/create-profile" component={CreateProfile} />

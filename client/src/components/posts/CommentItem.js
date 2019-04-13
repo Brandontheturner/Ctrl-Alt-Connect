@@ -8,6 +8,7 @@ import {
 } from '../../actions/postActions'
 import LikeButton from './LikeButton'
 import TrashButton from '../shared/buttons/TrashButton'
+import ProfileImage from '../profiles/ProfileImage'
 
 class CommentItem extends Component {
   handleDeleteClick = (postId, commentId) =>
@@ -21,7 +22,10 @@ class CommentItem extends Component {
     const { comment, postId, auth } = this.props
     return (
       <Item>
-        <Item.Image src={comment.avatar} circular size="tiny" />
+        <ProfileImage
+          to={`/profile/user/${comment.user}`}
+          src={comment.avatar}
+        />
         <Item.Content>
           {comment.user === auth.user.id && (
             <TrashButton

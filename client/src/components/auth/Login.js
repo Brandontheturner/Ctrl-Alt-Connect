@@ -62,13 +62,13 @@ class Login extends Component {
             <Form.Button fluid primary content="Submit" type="submit" />
           </Form>
           <Divider />
-          <span>
+          <>
             Don't have an account?
             <Link to="/register" style={{ fontWeight: 'bold' }}>
               {' '}
               Sign Up
             </Link>
-          </span>
+          </>
         </Segment>
       </Container>
     )

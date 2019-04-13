@@ -1,11 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Button, Icon } from 'semantic-ui-react'
+import { Button, Icon, Segment } from 'semantic-ui-react'
 
 const ProfileControl = () => {
   return (
     <>
-      <Button.Group basic>
+      <Button.Group basic style={{ marginTop: '10px' }}>
         <Button as={Link} to="/edit-profile" icon labelPosition="left">
           <Icon name="user" color="blue" />
           Edit Profile

@@ -5,14 +5,20 @@ import ProfileAbout from './ProfileAbout'
 import ProfileCreds from './ProfileCreds'
 import ProfileGithub from './ProfileGithub'
 import BackToDevelopers from '../shared/buttons/BackToDevelopers'
-import { getProfileByHandle } from '../../actions/profileActions'
+import {
+  getProfileByHandle,
+  getProfileByUserId
+} from '../../actions/profileActions'
 import { Container, Segment } from 'semantic-ui-react'
 
 class Profile extends Component {
   componentDidMount() {
     const { handle } = this.props.match.params
+    const { userId } = this.props.match.params
     if (handle) {
       this.props.getProfileByHandle(handle)
+    } else if (userId) {
+      this.props.getProfileByUserId(userId)
     }
   }
 
@@ -58,5 +64,5 @@ const mapStateToProps = ({ profile }) => ({ profile })
 
 export default connect(
   mapStateToProps,
-  { getProfileByHandle }
+  { getProfileByHandle, getProfileByUserId }
 )(Profile)

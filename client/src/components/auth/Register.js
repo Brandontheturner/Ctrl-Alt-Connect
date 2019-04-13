@@ -79,13 +79,13 @@ class Register extends Component {
             <Form.Button fluid primary content="Submit" type="submit" />
           </Form>
           <Divider />
-          <span>
+          <>
             Already have an account?
             <Link to="/login" style={{ fontWeight: 'bold' }}>
               {' '}
               Log In
             </Link>
-          </span>
+          </>
         </Segment>
       </Container>
     )

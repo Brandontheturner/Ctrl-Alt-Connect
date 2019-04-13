@@ -18,7 +18,7 @@ const LikeButton = ({ auth, likes, like, unlike }) => {
       basic
       compact
       onClick={like}
-      content={like.length}
+      content={likes.length}
     />
   )
 }

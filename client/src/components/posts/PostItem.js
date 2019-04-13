@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { deletePost, likePost, unlikePost } from '../../actions/postActions'
 import LikeButton from './LikeButton'
 import TrashButton from '../shared/buttons/TrashButton'
+import ProfileImage from '../profiles/ProfileImage'
 import './css/overrides.css'
 
 class PostItem extends Component {
@@ -16,7 +17,7 @@ class PostItem extends Component {
     const { post, auth, showActions } = this.props
     return (
       <Item>
-        <Item.Image src={post.avatar} circular size="tiny" />
+        <ProfileImage to={`/profile/user/${post.user}`} src={post.avatar} />
         <Item.Content>
           {post.user === auth.user.id && showActions && (
             <TrashButton handleClick={() => this.handleDeleteClick(post._id)} />

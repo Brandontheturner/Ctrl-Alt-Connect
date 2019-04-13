@@ -1,14 +1,19 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Button, Item, List, Icon } from 'semantic-ui-react'
+import ProfileImage from './ProfileImage'
 import isEmpty from '../../utils/isEmpty'
+import './css/overrides.css'
 
 class ProfileItem extends Component {
   render() {
     const { profile } = this.props
     return (
       <Item>
-        <Item.Image src={profile.user.avatar} circular bordered size="tiny" />
+        <ProfileImage
+          to={`/profile/handle/${profile.handle}`}
+          src={profile.user.avatar}
+        />
         <Item.Content>
           <Item.Description>
             <List floated="right" relaxed divided>
@@ -35,7 +40,7 @@ class ProfileItem extends Component {
           <Item.Extra>
             <Button
               as={Link}
-              to={`/profile/${profile.handle}`}
+              to={`/profile/handle/${profile.handle}`}
               primary
               content="View Profile"
               compact
