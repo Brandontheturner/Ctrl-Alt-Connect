@@ -7,6 +7,7 @@ const cors = require('cors')
 const users = require('./routes/api/users')
 const profile = require('./routes/api/profile')
 const posts = require('./routes/api/posts')
+const comments = require('./routes/api/comments')
 
 const app = express()
 app.use(cors())
@@ -32,6 +33,7 @@ mongoose
 app.use('/api/users', users)
 app.use('/api/profile', profile)
 app.use('/api/posts', posts)
+app.use('/api/comments', comments)
 
 const port = process.env.PORT || 5000
 app.listen(port, () => console.log(`Server running on port ${port}`))

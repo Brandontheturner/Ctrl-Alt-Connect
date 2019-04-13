@@ -62,29 +62,7 @@ router.post(
 router.post(
   '/unlike/:id',
   passport.authenticate('jwt', { session: false }),
-  posts.removeLike
-)
-
-/***********************************************
- *  @route  -->  POST api/posts/comment/:postId
- *  @desc   -->  Add comment to post
- *  @access -->  Private
- */
-router.post(
-  '/comment/:postId',
-  passport.authenticate('jwt', { session: false }),
-  posts.comment
-)
-
-/************************************************************
- *  @route  -->  DELETE api/posts/comment/:postId/:commentId
- *  @desc   -->  Remove comment from post
- *  @access -->  Private
- */
-router.delete(
-  '/comment/:postId/:commentId',
-  passport.authenticate('jwt', { session: false }),
-  posts.deleteComment
+  posts.unlike
 )
 
 module.exports = router

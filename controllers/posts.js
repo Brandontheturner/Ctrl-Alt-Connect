@@ -33,6 +33,7 @@ exports.getAll = (req, res) => {
 }
 
 exports.getById = (req, res) => {
+  console.log('TCL: exports.getById -> req.params.id', req.params.id)
   Post.findById(req.params.id)
     .then(post => res.json(post))
     .catch(err =>
@@ -82,7 +83,7 @@ exports.like = (req, res) => {
   })
 }
 
-exports.removeLike = (req, res) => {
+exports.unlike = (req, res) => {
   Profile.findOne({ user: req.user.id }).then(profile => {
     Post.findById(req.params.id)
       .then(post => {
@@ -106,52 +107,4 @@ exports.removeLike = (req, res) => {
         res.status(404).json({ nopostfound: 'No post found with that id' })
       )
   })
-}
-
-exports.comment = (req, res) => {
-  const { errors, isValid } = validateCommentInput(req.body)
-  if (!isValid) {
-    return res.status(400).json(errors)
-  }
-
-  Post.findById(req.params.postId)
-    .then(post => {
-      const newComment = {
-        text: req.body.text,
-        name: req.body.name,
-        avatar: req.body.avatar,
-        user: req.user.id
-      }
-
-      post.comments.unshift(newComment)
-      post.save().then(post => res.json(post))
-    })
-    .catch(err =>
-      res.status(404).json({ nopostfound: 'No post found with that id' })
-    )
-}
-
-exports.deleteComment = (req, res) => {
-  Post.findById(req.params.postId)
-    .then(post => {
-      // Ensure comment exists
-      if (
-        post.comments.filter(
-          comment => comment._id.toString() === req.params.commentId
-        ).length === 0
-      ) {
-        return res
-          .status(404)
-          .json({ nocommentfound: 'No comment found with that id' })
-      }
-
-      const removeIndex = post.comments
-        .map(item => item._id.toString())
-        .indexOf(req.params.commentId)
-      post.comments.splice(removeIndex, 1)
-      post.save().then(post => res.json(post))
-    })
-    .catch(err =>
-      res.status(404).json({ nopostfound: 'No post found with that id' })
-    )
 }
