@@ -36,13 +36,13 @@ export const deletePost = id => dispatch => {
     .catch(err => dispatch({ type: GET_ERRORS, payload: err.response.data }))
 }
 
-export const addLike = id => dispatch => {
+export const likePost = id => dispatch => {
   db.post(`/posts/like/${id}`)
     .then(res => dispatch(getPosts()))
     .catch(err => dispatch({ type: GET_ERRORS, payload: err.response.data }))
 }
 
-export const removeLike = id => dispatch => {
+export const unlikePost = id => dispatch => {
   db.post(`/posts/unlike/${id}`)
     .then(res => dispatch(getPosts()))
     .catch(err => dispatch({ type: GET_ERRORS, payload: err.response.data }))
@@ -50,13 +50,25 @@ export const removeLike = id => dispatch => {
 
 export const addComment = (postId, commentData) => dispatch => {
   dispatch(clearErrors())
-  db.post(`/posts/comment/${postId}`, commentData)
+  db.post(`/comments/${postId}`, commentData)
     .then(res => dispatch(getPost(postId)))
     .catch(err => dispatch({ type: GET_ERRORS, payload: err.response.data }))
 }
 
 export const deleteComment = (postId, commentId) => dispatch => {
-  db.delete(`/posts/comment/${postId}/${commentId}`)
+  db.delete(`/comments/${postId}/${commentId}`)
+    .then(res => dispatch(getPost(postId)))
+    .catch(err => dispatch({ type: GET_ERRORS, payload: err.response.data }))
+}
+
+export const likeComment = (postId, commentId) => dispatch => {
+  db.post(`/comments/like/${postId}/${commentId}`)
+    .then(res => dispatch(getPost(postId)))
+    .catch(err => dispatch({ type: GET_ERRORS, payload: err.response.data }))
+}
+
+export const unlikeComment = (postId, commentId) => dispatch => {
+  db.post(`/comments/unlike/${postId}/${commentId}`)
     .then(res => dispatch(getPost(postId)))
     .catch(err => dispatch({ type: GET_ERRORS, payload: err.response.data }))
 }
