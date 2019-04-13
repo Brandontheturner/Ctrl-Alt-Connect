@@ -2,58 +2,35 @@ import React, { Component } from 'react'
 import { Item, Button } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { deletePost, addLike, removeLike } from '../../actions/postActions'
+import { deletePost, likePost, unlikePost } from '../../actions/postActions'
+import LikeButton from './buttons/LikeButton'
+import DeleteButton from './buttons/DeleteButton'
 import './css/overrides.css'
 
 class PostItem extends Component {
   handleDeleteClick = id => this.props.deletePost(id)
-  handleLikeClick = id => this.props.addLike(id)
-  handleUnlikeClick = id => this.props.removeLike(id)
+  handleLikeClick = id => this.props.likePost(id)
+  handleUnlikeClick = id => this.props.unlikePost(id)
 
   render() {
     const { post, auth, showActions } = this.props
-    const likeButton = (
-      <Button
-        icon="heart outline"
-        basic
-        compact
-        onClick={() => this.handleLikeClick(post._id)}
-      />
-    )
-    const unlikeButton = (
-      <Button
-        icon="heart"
-        color="red"
-        basic
-        compact
-        onClick={() => this.handleUnlikeClick(post._id)}
-      />
-    )
     return (
       <Item>
         <Item.Image src={post.avatar} circular size="tiny" />
         <Item.Content>
           {post.user === auth.user.id && showActions && (
-            <Button
-              basic
-              color="red"
-              icon="times"
-              compact
-              circular
-              size="tiny"
-              floated="right"
-              onClick={() => this.handleDeleteClick(post._id)}
-            />
+            <DeleteButton deleteItem={() => this.handleDeleteClick(post._id)} />
           )}
           <Item.Header>{post.name}</Item.Header>
           <Item.Meta>{`${post.likes.length} Likes`}</Item.Meta>
           <Item.Description>{post.text}</Item.Description>
           {showActions && (
             <Item.Extra>
-              {/* CONDITIONAL RENDERING FOR LIKE BUTTON */}
-              {post.likes.find(item => item.user === auth.user.id)
-                ? unlikeButton
-                : likeButton}
+              <LikeButton
+                likes={post.likes}
+                like={() => this.handleLikeClick(post._id)}
+                unlike={() => this.handleUnlikeClick(post._id)}
+              />
               <Button
                 as={Link}
                 to={`/post/${post._id}`}
@@ -73,5 +50,5 @@ const mapStateToProps = ({ auth }) => ({ auth })
 
 export default connect(
   mapStateToProps,
-  { deletePost, addLike, removeLike }
+  { deletePost, likePost, unlikePost }
 )(PostItem)
