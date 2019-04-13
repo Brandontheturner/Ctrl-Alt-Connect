@@ -4,8 +4,8 @@ import { getPost } from '../../actions/postActions'
 import { Segment, Item } from 'semantic-ui-react'
 import isEmpty from '../../utils/isEmpty'
 import PostItem from './PostItem'
-import CommentForm from './comments/CommentForm'
-import CommentFeed from './comments/CommentFeed'
+import CommentForm from './CommentForm'
+import CommentFeed from './CommentFeed'
 import PageHeader from '../shared/pages/PageHeader'
 import BackToFeed from '../shared/buttons/BackToFeed'
 
@@ -16,7 +16,6 @@ class Post extends Component {
 
   render() {
     const { post, loading } = this.props.posts
-
     return (
       <>
         <BackToFeed />

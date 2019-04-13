@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addComment } from '../../../actions/postActions'
+import { addComment } from '../../actions/postActions'
 import { Segment, Header, Form } from 'semantic-ui-react'
-import FormTextArea from '../../shared/form/FormTextArea'
+import FormTextArea from '../shared/form/FormTextArea'
 
 class CommentForm extends Component {
   state = {
