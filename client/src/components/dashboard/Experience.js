@@ -20,7 +20,6 @@ class Experience extends Component {
                   <Table.HeaderCell>Company</Table.HeaderCell>
                   <Table.HeaderCell>Title</Table.HeaderCell>
                   <Table.HeaderCell>Years</Table.HeaderCell>
-                  <Table.HeaderCell />
                 </Table.Row>
               </Table.Header>
 

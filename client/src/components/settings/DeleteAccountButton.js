@@ -18,9 +18,7 @@ class DeleteAccountButton extends Component {
 
     return (
       <div>
-        <Button negative onClick={this.show}>
-          Delete Account
-        </Button>
+        <Button negative content="Delete Account" onClick={this.show} />
         <Confirm
           open={open}
           content="Are you sure you want to delete your account? This CANNOT be undone!"

@@ -3,8 +3,8 @@ import { Item, Button } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { deletePost, likePost, unlikePost } from '../../actions/postActions'
-import LikeButton from './buttons/LikeButton'
-import DeleteButton from './buttons/DeleteButton'
+import LikeButton from './LikeButton'
+import TrashButton from '../shared/buttons/TrashButton'
 import './css/overrides.css'
 
 class PostItem extends Component {
@@ -19,7 +19,7 @@ class PostItem extends Component {
         <Item.Image src={post.avatar} circular size="tiny" />
         <Item.Content>
           {post.user === auth.user.id && showActions && (
-            <DeleteButton deleteItem={() => this.handleDeleteClick(post._id)} />
+            <TrashButton handleClick={() => this.handleDeleteClick(post._id)} />
           )}
           <Item.Header>{post.name}</Item.Header>
           <Item.Description>{post.text}</Item.Description>

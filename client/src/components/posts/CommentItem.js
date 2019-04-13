@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
-import { Item, Button } from 'semantic-ui-react'
+import { Item } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import {
   deleteComment,
   likeComment,
   unlikeComment
 } from '../../actions/postActions'
-import LikeButton from './buttons/LikeButton'
-import DeleteButton from './buttons/DeleteButton'
+import LikeButton from './LikeButton'
+import TrashButton from '../shared/buttons/TrashButton'
 
 class CommentItem extends Component {
   handleDeleteClick = (postId, commentId) =>
@@ -24,8 +24,8 @@ class CommentItem extends Component {
         <Item.Image src={comment.avatar} circular size="tiny" />
         <Item.Content>
           {comment.user === auth.user.id && (
-            <DeleteButton
-              deleteItem={() => this.handleDeleteClick(postId, comment._id)}
+            <TrashButton
+              handleClick={() => this.handleDeleteClick(postId, comment._id)}
             />
           )}
           <Item.Header>{comment.name}</Item.Header>

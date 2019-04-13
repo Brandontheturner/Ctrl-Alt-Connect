@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from 'semantic-ui-react'
 
-const TrashButton = ({ size, handleClick }) => {
+const TrashButton = ({ handleClick }) => {
   return (
     <Button
       icon="trash alternate outline"
@@ -9,7 +9,8 @@ const TrashButton = ({ size, handleClick }) => {
       negative
       compact
       circular
-      size={size}
+      size="tiny"
+      floated="right"
       onClick={handleClick}
     />
   )

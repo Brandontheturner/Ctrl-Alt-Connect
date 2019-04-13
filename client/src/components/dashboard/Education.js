@@ -21,7 +21,6 @@ class Education extends Component {
                   <Table.HeaderCell>Degree</Table.HeaderCell>
                   <Table.HeaderCell>Field of Study</Table.HeaderCell>
                   <Table.HeaderCell>Years</Table.HeaderCell>
-                  <Table.HeaderCell />
                 </Table.Row>
               </Table.Header>
 
@@ -38,7 +37,6 @@ class Education extends Component {
                     </Table.Cell>
                     <Table.Cell>
                       <TrashButton
-                        size="tiny"
                         handleClick={() => this.handleDeleteClick(item._id)}
                       />
                     </Table.Cell>
