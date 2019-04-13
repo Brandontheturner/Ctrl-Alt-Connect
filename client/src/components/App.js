@@ -16,7 +16,7 @@ import AddEducation from './dashboard/profile-actions/add-credentials/AddEducati
 import AccountSettings from './settings/AccountSettings'
 import Profiles from './profiles/Profiles'
 import Profile from './profile/Profile'
-import Post from './posts/Post'
+import PostPage from './posts/PostPage'
 import PostFeed from './posts/PostFeed'
 import NotFound from './shared/pages/NotFound'
 import './App.css'
@@ -41,7 +41,7 @@ class App extends Component {
             <PrivateRoute path="/add-education" component={AddEducation} />
             <PrivateRoute path="/settings" component={AccountSettings} />
             <PrivateRoute path="/feed" component={PostFeed} />
-            <PrivateRoute path="/post/:id" component={Post} />
+            <PrivateRoute path="/post/:id" component={PostPage} />
           </Container>
           <Footer />
         </>

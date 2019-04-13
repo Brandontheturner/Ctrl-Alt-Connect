@@ -10,12 +10,6 @@ class ProfileAbout extends Component {
 
     return (
       <>
-        <Header
-          content={`About ${firstName}`}
-          color="blue"
-          textAlign="center"
-          size="large"
-        />
         <Header content="Bio" attached="top" inverted />
         <Segment attached="bottom">
           <Header.Subheader

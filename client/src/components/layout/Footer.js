@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <div>
       <Segment attached="bottom" inverted textAlign="center">
-        Copyright &copy; {new Date().getFullYear()} My App
+        Copyright &copy; {new Date().getFullYear()} Ctrl+Alt+Connect
       </Segment>
     </div>
   )
