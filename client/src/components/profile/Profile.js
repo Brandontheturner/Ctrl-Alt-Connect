@@ -52,7 +52,7 @@ class Profile extends Component {
     return (
       <Container>
         <BackToDevelopers />
-        <Segment loading={profile === null || loading}>
+        <Segment raised loading={profile === null || loading}>
           {profileContent}
         </Segment>
       </Container>

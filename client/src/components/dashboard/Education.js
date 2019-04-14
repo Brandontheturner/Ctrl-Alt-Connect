@@ -38,6 +38,7 @@ class Education extends Component {
                     <Table.Cell>
                       <TrashButton
                         action={() => this.handleDeleteClick(item._id)}
+                        item="Education"
                       />
                     </Table.Cell>
                   </Table.Row>

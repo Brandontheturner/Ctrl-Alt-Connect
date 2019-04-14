@@ -123,7 +123,7 @@ class EditProfile extends Component {
               type="text"
               placeholder="* Profile handle"
               info="A unique handle for your profile URL. Your full name, company name,
-            nickname, etc (This CAN'T be changed later)"
+            nickname, etc"
               value={this.state.handle}
               onChange={this.handleChange}
               error={errors.handle}
@@ -194,6 +194,10 @@ class EditProfile extends Component {
             <Form.Button
               type="button"
               content="Add Social Links"
+              compact
+              basic
+              icon="chain"
+              labelPosition="right"
               onClick={this.toggleDisplaySocial}
             />
             {displaySocial && (
