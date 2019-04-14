@@ -36,4 +36,15 @@ router.get(
   users.getCurrent
 )
 
+/***********************************************
+ *  @route  -->  PUT api/users/settings
+ *  @desc   -->  Update current users password
+ *  @access -->  Private
+ */
+router.put(
+  '/settings/password',
+  passport.authenticate('jwt', { session: false }),
+  users.changePassword
+)
+
 module.exports = router

@@ -3,32 +3,22 @@ import { connect } from 'react-redux'
 import { Header, Segment, List } from 'semantic-ui-react'
 import { getCurrentProfile } from '../../actions/profileActions'
 import PageHeader from '../shared/pages/PageHeader'
-import ChangeUsername from './ChangeUsername'
 import UpdatePassword from './UpdatePassword'
 import DeleteAccount from './DeleteAccount'
 import './css/overrides.css'
 
-class Dashboard extends Component {
+class AccountSettings extends Component {
   componentDidMount() {
     this.props.getCurrentProfile()
   }
 
   render() {
     const { profile, loading } = this.props.profile
-
     return (
       <>
         <PageHeader content="Account Settings" />
         <Segment attached="bottom" loading={profile === null || loading}>
           <List divided relaxed>
-            {/* CHANGE USERNAME SECTION */}
-            <Header content="Change User Handle" />
-            <List.Item>
-              <List.Content>
-                <ChangeUsername />
-              </List.Content>
-            </List.Item>
-
             {/* UPDATE PASSWORD SECTION */}
             <Header content="Update Password" />
             <List.Item>
@@ -53,9 +43,12 @@ class Dashboard extends Component {
   }
 }
 
-const mapStateToProps = ({ auth, profile }) => ({ auth, profile })
+const mapStateToProps = ({ profile, errors }) => ({
+  profile,
+  errors
+})
 
 export default connect(
   mapStateToProps,
   { getCurrentProfile }
-)(Dashboard)
+)(AccountSettings)

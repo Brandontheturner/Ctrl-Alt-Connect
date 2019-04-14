@@ -1,4 +1,4 @@
-import { GET_ERRORS, SET_CURRENT_USER } from './types'
+import { GET_ERRORS, SET_CURRENT_USER, CLEAR_ERRORS } from './types'
 import history from '../history'
 import db from '../api/db'
 import jwt_decode from 'jwt-decode'
@@ -50,3 +50,11 @@ export const logoutUser = () => dispatch => {
   // Remove current user from redux store
   dispatch(setCurrentUser({}))
 }
+
+export const changePassword = data => dispatch => {
+  db.put('/users/settings/password', data)
+    .then(res => dispatch(clearErrors()))
+    .catch(err => dispatch({ type: GET_ERRORS, payload: err.response.data }))
+}
+
+export const clearErrors = () => ({ type: CLEAR_ERRORS })

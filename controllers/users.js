@@ -6,6 +6,7 @@ const keys = require('../config/keys')
 // Load Input Validation
 const validateRegisterInput = require('../validation/register')
 const validateLoginInput = require('../validation/login')
+const validatePasswordInput = require('../validation/password')
 
 // Load User model
 const User = require('../models/User')
@@ -36,7 +37,7 @@ exports.register = (req, res) => {
         password: req.body.password
       })
 
-      // Password encryption
+      // Password hashing
       bcrypt.genSalt(10, (err, salt) => {
         if (err) throw err
         bcrypt.hash(newUser.password, salt, (err, hash) => {
@@ -84,6 +85,46 @@ exports.login = (req, res) => {
         )
       } else {
         errors.password = 'Invalid password'
+        res.status(400).json(errors)
+      }
+    })
+  })
+}
+
+exports.changePassword = (req, res) => {
+  // Validate request input
+  const { errors, isValid } = validatePasswordInput(req.body)
+  if (!isValid) {
+    return res.status(400).json(errors)
+  }
+
+  // Find user by id on database
+  User.findById(req.body.userId).then(user => {
+    if (!user) {
+      errors.user = 'User not found'
+      return res.status(404).json(errors)
+    }
+
+    // Check password using bcrypt compare
+    const oldPassword = req.body.oldPassword
+    bcrypt.compare(oldPassword, user.password).then(isMatch => {
+      if (isMatch) {
+        const newPassword = req.body.newPassword
+
+        // Password hashing
+        bcrypt.genSalt(10, (err, salt) => {
+          if (err) throw err
+          bcrypt.hash(newPassword, salt, (err, hash) => {
+            if (err) throw err
+            user.password = hash
+            user
+              .save()
+              .then(user => res.json(user))
+              .catch(err => console.log(err))
+          })
+        })
+      } else {
+        errors.oldPassword = 'Invalid password'
         res.status(400).json(errors)
       }
     })
