@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Header, Segment } from 'semantic-ui-react'
+import { Header, Segment, List } from 'semantic-ui-react'
 import { getCurrentProfile } from '../../actions/profileActions'
 import PageHeader from '../shared/pages/PageHeader'
-import DeleteAccountButton from './DeleteAccountButton'
+import ChangeUsername from './ChangeUsername'
+import UpdatePassword from './UpdatePassword'
+import DeleteAccount from './DeleteAccount'
+import './css/overrides.css'
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -17,10 +20,33 @@ class Dashboard extends Component {
       <>
         <PageHeader content="Account Settings" />
         <Segment attached="bottom" loading={profile === null || loading}>
-          <Header content="Danger Zone" attached="top" inverted />
-          <Segment attached="bottom">
-            <DeleteAccountButton />
-          </Segment>
+          <List divided relaxed>
+            {/* CHANGE USERNAME SECTION */}
+            <Header content="Change User Handle" />
+            <List.Item>
+              <List.Content>
+                <ChangeUsername />
+              </List.Content>
+            </List.Item>
+
+            {/* UPDATE PASSWORD SECTION */}
+            <Header content="Update Password" />
+            <List.Item>
+              <UpdatePassword />
+            </List.Item>
+
+            {/* DELETE ACCOUNT SECTION */}
+            <Header content="Delete Account" color="red" />
+            <List.Item>
+              <List.Description>
+                Deleting you're account cannot be undone. Please be certain
+                before doing so.
+              </List.Description>
+              <List.Content>
+                <DeleteAccount />
+              </List.Content>
+            </List.Item>
+          </List>
         </Segment>
       </>
     )
