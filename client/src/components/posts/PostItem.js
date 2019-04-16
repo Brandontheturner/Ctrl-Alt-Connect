@@ -6,9 +6,8 @@ import { deletePost, likePost, unlikePost } from '../../actions/postActions'
 import LikeButton from './LikeButton'
 import TrashButton from '../shared/buttons/TrashButton'
 import ProfileImage from '../profiles/ProfileImage'
-import SyntaxHighlighter from 'react-syntax-highlighter'
 import './css/overrides.css'
-const codeBlocks = require('gfm-code-blocks')
+import CodeBlocks from '../shared/CodeBlocks'
 
 class PostItem extends Component {
   handleDeleteClick = id => this.props.deletePost(id)
@@ -17,29 +16,6 @@ class PostItem extends Component {
 
   render() {
     const { post, auth, showActions } = this.props
-    const blocks = codeBlocks(post.text)
-    console.log('TCL: PostItem -> render -> blocks', blocks)
-    let postArr = []
-    blocks.map((block, index) => {
-      let temp = {}
-
-      temp.beforeCode =
-        postArr[index - 1] && postArr[index - 1].afterCode
-          ? null
-          : post.text.slice(0, block.start).split('```')[0]
-
-      temp.code = (
-        <div key={block.start}>
-          <SyntaxHighlighter language={block.language ? block.language : null}>
-            {block.code.trim()}
-          </SyntaxHighlighter>
-        </div>
-      )
-
-      temp.afterCode = post.text.slice(block.end).split('```')[0]
-
-      postArr.push(temp)
-    })
 
     return (
       <Item>
@@ -53,15 +29,7 @@ class PostItem extends Component {
           )}
           <Item.Header>{post.name}</Item.Header>
           <Item.Description>
-            {postArr.length
-              ? postArr.map((item, index) => (
-                  <div key={index}>
-                    <>{item.beforeCode}</>
-                    <>{item.code}</>
-                    <>{item.afterCode}</>
-                  </div>
-                ))
-              : post.text}
+            <CodeBlocks text={post.text} />
           </Item.Description>
           {showActions && (
             <Item.Extra>

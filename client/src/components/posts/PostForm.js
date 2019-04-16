@@ -45,7 +45,7 @@ class PostForm extends Component {
         <Segment attached="bottom">
           <Form onSubmit={this.handleSubmit} error>
             <Button
-              content="Insert"
+              content="Insert code block"
               compact
               basic
               icon="code"

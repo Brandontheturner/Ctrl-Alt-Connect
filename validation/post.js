@@ -9,8 +9,8 @@ module.exports = function validatePostInput(data) {
 
   if (Validator.isEmpty(data.text)) {
     errors.text = 'Text field is required'
-  } else if (!Validator.isLength(data.text, { min: 10, max: 300 })) {
-    errors.text = 'Text must be between 10 and 300 characters'
+  } else if (!Validator.isLength(data.text, { min: 10, max: 600 })) {
+    errors.text = 'Text must be between 10 and 500 characters'
   }
 
   return { errors, isValid: isEmpty(errors) }
