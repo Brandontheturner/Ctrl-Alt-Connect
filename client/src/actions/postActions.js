@@ -8,11 +8,22 @@ import {
   GET_POST,
   CLEAR_ERRORS
 } from './types'
+import history from '../history'
 
 export const createPost = postData => dispatch => {
   dispatch(clearErrors())
   db.post('/posts', postData)
     .then(res => dispatch({ type: CREATE_POST, payload: res.data }))
+    .catch(err => dispatch({ type: GET_ERRORS, payload: err.response.data }))
+}
+
+export const editPost = (postId, postData) => dispatch => {
+  dispatch(clearErrors())
+  db.put(`/posts/${postId}`, postData)
+    .then(res => {
+      history.push('/feed')
+      dispatch({ type: CREATE_POST, payload: res.data })
+    })
     .catch(err => dispatch({ type: GET_ERRORS, payload: err.response.data }))
 }
 

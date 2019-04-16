@@ -22,10 +22,22 @@ class PostItem extends Component {
         <ProfileImage to={`/profile/user/${post.user}`} src={post.avatar} />
         <Item.Content>
           {post.user === auth.user.id && showActions && (
-            <TrashButton
-              item="Post"
-              action={() => this.handleDeleteClick(post._id)}
-            />
+            <>
+              <TrashButton
+                item="Post"
+                action={() => this.handleDeleteClick(post._id)}
+              />
+              <Button
+                as={Link}
+                to={`/post/${post._id}/edit`}
+                circular
+                compact
+                basic
+                floated="right"
+                icon="edit"
+                size="tiny"
+              />
+            </>
           )}
           <Item.Header>{post.name}</Item.Header>
           <Item.Description>

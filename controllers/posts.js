@@ -24,9 +24,11 @@ exports.create = (req, res) => {
 }
 
 exports.edit = (req, res) => {
+  console.log('TCL: exports.edit -> req.body', req.body)
   const { errors, isValid } = valiidatePostInput(req.body)
 
-  Post.findById(req.body.postId).then(post => {
+  console.log('TCL: exports.edit -> req.params.id', req.params.id)
+  Post.findById(req.params.id).then(post => {
     if (!post) {
       errors.post = 'Post not found'
       return res.status(404).json(errors)

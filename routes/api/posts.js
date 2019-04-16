@@ -23,7 +23,7 @@ router.post('/', passport.authenticate('jwt', { session: false }), posts.create)
  *  @desc   -->  Edit a post
  *  @access -->  Private
  */
-router.put('/', passport.authenticate('jwt', { session: false }), posts.edit)
+router.put('/:id', passport.authenticate('jwt', { session: false }), posts.edit)
 
 /***********************************
  *  @route  -->  GET api/posts
