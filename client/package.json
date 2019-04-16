@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "gfm-code-blocks": "^1.0.0",
     "jwt-decode": "^2.2.0",
     "moment": "^2.24.0",
     "react": "^16.8.6",
@@ -12,6 +13,7 @@
     "react-redux": "^6.0.1",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
+    "react-syntax-highlighter": "^10.2.1",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
     "semantic-ui-react": "^0.86.0",
