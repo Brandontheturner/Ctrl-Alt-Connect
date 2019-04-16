@@ -29,6 +29,13 @@ router.post(
   comments.add
 )
 
+/*******************************
+ *  @route  -->  POST api/posts
+ *  @desc   -->  Edit a comment
+ *  @access -->  Private
+ */
+router.put('/', passport.authenticate('jwt', { session: false }), comments.edit)
+
 /************************************************************
  *  @route  -->  DELETE api/posts/comments/:postId/:commentId
  *  @desc   -->  Remove comment from post

@@ -23,6 +23,26 @@ exports.create = (req, res) => {
   newPost.save().then(post => res.json(post))
 }
 
+exports.edit = (req, res) => {
+  const { errors, isValid } = valiidatePostInput(req.body)
+
+  Post.findById(req.body.postId).then(post => {
+    if (!post) {
+      errors.post = 'Post not found'
+      return res.status(404).json(errors)
+    }
+    if (!isValid) {
+      return res.status(400).json(errors)
+    }
+
+    post.text = req.body.text
+    post
+      .save()
+      .then(post => res.json(post))
+      .catch(err => console.log(err))
+  })
+}
+
 exports.getAll = (req, res) => {
   Post.find()
     .sort({ date: -1 })
@@ -33,7 +53,6 @@ exports.getAll = (req, res) => {
 }
 
 exports.getById = (req, res) => {
-  console.log('TCL: exports.getById -> req.params.id', req.params.id)
   Post.findById(req.params.id)
     .then(post => res.json(post))
     .catch(err =>

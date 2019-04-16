@@ -18,6 +18,13 @@ router.get('/test', posts.test)
  */
 router.post('/', passport.authenticate('jwt', { session: false }), posts.create)
 
+/*******************************
+ *  @route  -->  POST api/posts
+ *  @desc   -->  Edit a post
+ *  @access -->  Private
+ */
+router.put('/', passport.authenticate('jwt', { session: false }), posts.edit)
+
 /***********************************
  *  @route  -->  GET api/posts
  *  @desc   -->  Get all posts

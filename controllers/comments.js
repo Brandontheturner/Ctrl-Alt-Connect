@@ -38,6 +38,31 @@ exports.add = (req, res) => {
     )
 }
 
+exports.edit = (req, res) => {
+  const { errors, isValid } = validateCommentInput(req.body)
+
+  Post.findById(req.body.postId).then(post => {
+    if (!post) {
+      errors.post = 'Post not found'
+      return res.status(404).json(errors)
+    }
+    if (!isValid) {
+      return res.status(400).json(errors)
+    }
+
+    let index = post.comments.findIndex(
+      comment => comment._id.toString() === req.body.commentId
+    )
+
+    post.comments[index].text = req.body.text
+
+    post
+      .save()
+      .then(post => res.json(post))
+      .catch(err => console.log(err))
+  })
+}
+
 exports.delete = (req, res) => {
   Post.findById(req.params.postId)
     .then(post => {
