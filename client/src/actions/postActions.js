@@ -10,6 +10,7 @@ import {
 } from './types'
 
 export const createPost = postData => dispatch => {
+  dispatch(clearErrors())
   db.post('/posts', postData)
     .then(res => dispatch({ type: CREATE_POST, payload: res.data }))
     .catch(err => dispatch({ type: GET_ERRORS, payload: err.response.data }))

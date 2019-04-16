@@ -6,9 +6,10 @@ import {
   likeComment,
   unlikeComment
 } from '../../actions/postActions'
-import LikeButton from './LikeButton'
+import LikeButton from './buttons/Like'
 import TrashButton from '../shared/buttons/TrashButton'
 import ProfileImage from '../profiles/ProfileImage'
+import CodeBlocks from '../shared/CodeBlocks'
 
 class CommentItem extends Component {
   handleDeleteClick = (postId, commentId) =>
@@ -34,7 +35,9 @@ class CommentItem extends Component {
             />
           )}
           <Item.Header>{comment.name}</Item.Header>
-          <Item.Description>{comment.text}</Item.Description>
+          <Item.Description>
+            <CodeBlocks text={comment.text} />
+          </Item.Description>
 
           <Item.Extra>
             <LikeButton

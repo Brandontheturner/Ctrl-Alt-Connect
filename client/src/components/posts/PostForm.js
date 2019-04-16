@@ -64,7 +64,7 @@ class PostForm extends Component {
                   : null
               }
             />
-            <Form.Button primary type="submit" content="Submit" compact />
+            <Form.Button primary type="submit" content="Submit" />
           </Form>
         </Segment>
       </>

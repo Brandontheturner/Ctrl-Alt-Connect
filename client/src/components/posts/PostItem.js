@@ -3,11 +3,11 @@ import { Item, Button } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { deletePost, likePost, unlikePost } from '../../actions/postActions'
-import LikeButton from './LikeButton'
+import LikeButton from './buttons/Like'
 import TrashButton from '../shared/buttons/TrashButton'
 import ProfileImage from '../profiles/ProfileImage'
-import './css/overrides.css'
 import CodeBlocks from '../shared/CodeBlocks'
+import './css/overrides.css'
 
 class PostItem extends Component {
   handleDeleteClick = id => this.props.deletePost(id)

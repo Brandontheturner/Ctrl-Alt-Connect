@@ -7,7 +7,6 @@ const LikeButton = ({ auth, likes, like, unlike }) => {
     <Button
       icon="heart"
       color="red"
-      basic
       compact
       onClick={unlike}
       content={likes.length}
@@ -15,7 +14,6 @@ const LikeButton = ({ auth, likes, like, unlike }) => {
   ) : (
     <Button
       icon="heart outline"
-      basic
       compact
       onClick={like}
       content={likes.length}

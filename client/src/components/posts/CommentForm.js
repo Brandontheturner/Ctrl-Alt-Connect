@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { addComment } from '../../actions/postActions'
-import { Segment, Header, Form } from 'semantic-ui-react'
+import { Button, Segment, Header, Form } from 'semantic-ui-react'
 import FormTextArea from '../shared/form/FormTextArea'
 
 class CommentForm extends Component {
   state = {
     text: '',
-    errors: {}
+    errors: {},
+    insertCodeClicked: false
   }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
@@ -22,6 +23,18 @@ class CommentForm extends Component {
     })
   }
 
+  handleInsertCodeClick = e => {
+    e.preventDefault()
+    this.setState({ insertCodeClicked: true })
+    this.state.text.length
+      ? this.setState({
+          text: this.state.text + '\n```\n<Insert Code Here>\n```'
+        })
+      : this.setState({
+          text: '```\n<Insert Code Here>\n```'
+        })
+  }
+
   componentWillReceiveProps({ errors }) {
     if (errors) this.setState({ errors })
   }
@@ -32,6 +45,14 @@ class CommentForm extends Component {
         <Header content="Post a Comment" attached="top" inverted />
         <Segment attached="bottom">
           <Form onSubmit={this.handleSubmit} error>
+            <Button
+              content="Insert code block"
+              compact
+              basic
+              icon="code"
+              labelPosition="right"
+              onClick={this.handleInsertCodeClick}
+            />
             <FormTextArea
               name="text"
               placeholder="Share your thoughts..."
