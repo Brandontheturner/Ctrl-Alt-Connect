@@ -70,7 +70,7 @@ class EditProfile extends Component {
 
     // Populate any existing profile data to the edit profile form fields
     if (profile) {
-      const skillsCSV = profile.skills.join(',')
+      const skills = profile.skills.join(',')
       // Handle optional profile fields that might not exist
       profile.company = !isEmpty(profile.company) ? profile.company : ''
       profile.website = !isEmpty(profile.website) ? profile.website : ''
@@ -96,7 +96,7 @@ class EditProfile extends Component {
         ? profile.social.instagram
         : ''
       // Apply to component state
-      this.setState({ ...profile, skills: skillsCSV })
+      this.setState({ ...profile, skills })
     }
   }
 

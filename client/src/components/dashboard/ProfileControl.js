@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Button, Icon, Segment } from 'semantic-ui-react'
+import { Button, Icon } from 'semantic-ui-react'
 
 const ProfileControl = () => {
   return (
@@ -19,7 +19,6 @@ const ProfileControl = () => {
           Add Education
         </Button>
       </Button.Group>
-      {/* TODO EXP & EDU SECTIONS */}
     </>
   )
 }

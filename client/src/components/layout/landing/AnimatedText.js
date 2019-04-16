@@ -6,7 +6,7 @@ class AnimatedText extends Component {
     const { strings } = this.props
     const options = {
       strings: strings,
-      startDelay: 2000,
+      startDelay: 1000,
       typeSpeed: 100
     }
     this.typed = new Typed(this.el, options)
