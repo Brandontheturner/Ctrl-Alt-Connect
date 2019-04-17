@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { registerUser } from '../../actions/authActions'
 import { Form, Container, Segment, Divider } from 'semantic-ui-react'
+import Google from './Google'
 import FormInput from '../shared/form/FormInput'
 import FormHeader from '../shared/form/FormHeader'
 
@@ -39,6 +40,8 @@ class Register extends Component {
           subheader="Register an account with Ctrl+Alt+Connect"
         />
         <Segment attached="bottom">
+          <Google />
+          <Divider horizontal>or</Divider>
           <Form onSubmit={this.handleSubmit} error noValidate>
             <FormInput
               name="name"
