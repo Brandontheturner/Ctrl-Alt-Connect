@@ -24,10 +24,8 @@ exports.create = (req, res) => {
 }
 
 exports.edit = (req, res) => {
-  console.log('TCL: exports.edit -> req.body', req.body)
   const { errors, isValid } = valiidatePostInput(req.body)
 
-  console.log('TCL: exports.edit -> req.params.id', req.params.id)
   Post.findById(req.params.id).then(post => {
     if (!post) {
       errors.post = 'Post not found'
