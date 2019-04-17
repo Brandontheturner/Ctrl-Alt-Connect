@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Table, Header, Segment } from 'semantic-ui-react'
+import { Table } from 'semantic-ui-react'
 import { deleteEducation } from '../../actions/profileActions'
 import TrashButton from '../shared/buttons/TrashButton'
 import formatDate from '../../utils/formatDate'

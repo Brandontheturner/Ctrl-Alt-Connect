@@ -7,6 +7,10 @@ const PostSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'user'
   },
+  subject: {
+    type: String,
+    default: 'No Subject'
+  },
   text: {
     type: String,
     required: true

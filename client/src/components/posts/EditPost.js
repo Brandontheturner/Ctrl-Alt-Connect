@@ -2,18 +2,23 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { editPost } from '../../actions/postActions'
 import { Segment, Header, Form, Button } from 'semantic-ui-react'
+import FormInput from '../shared/form/FormInput'
 import FormTextArea from '../shared/form/FormTextArea'
 
 class EditPost extends Component {
   state = {
     text: '',
+    subject: '',
     errors: {},
     insertCodeClicked: false
   }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
   handleSubmit = () => {
-    this.props.editPost(this.props.post._id, { text: this.state.text })
+    this.props.editPost(this.props.post._id, {
+      text: this.state.text,
+      subject: this.state.subject
+    })
   }
 
   handleInsertCodeClick = e => {
@@ -29,7 +34,10 @@ class EditPost extends Component {
   }
 
   componentDidMount() {
-    this.setState({ text: this.props.post.text })
+    this.setState({
+      subject: this.props.post.subject,
+      text: this.props.post.text
+    })
   }
 
   componentWillReceiveProps({ errors }) {
@@ -49,6 +57,14 @@ class EditPost extends Component {
               icon="code"
               labelPosition="right"
               onClick={this.handleInsertCodeClick}
+            />
+            <FormInput
+              name="subject"
+              type="text"
+              placeholder="Subject"
+              value={this.state.subject}
+              onChange={this.handleChange}
+              error={this.state.errors.subject}
             />
             <FormTextArea
               name="text"

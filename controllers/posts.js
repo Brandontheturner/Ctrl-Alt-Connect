@@ -15,6 +15,7 @@ exports.create = (req, res) => {
 
   const newPost = new Post({
     text: req.body.text,
+    subject: req.body.subject,
     name: req.body.name,
     avatar: req.body.avatar,
     user: req.user.id
@@ -36,6 +37,7 @@ exports.edit = (req, res) => {
     }
 
     post.text = req.body.text
+    post.subject = req.body.subject
     post
       .save()
       .then(post => res.json(post))
