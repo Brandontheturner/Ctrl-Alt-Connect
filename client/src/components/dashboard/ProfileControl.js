@@ -5,7 +5,7 @@ import { Button, Icon } from 'semantic-ui-react'
 const ProfileControl = () => {
   return (
     <>
-      <Button.Group basic style={{ marginTop: '10px' }}>
+      <Button.Group compact basic style={{ marginTop: '10px' }}>
         <Button as={Link} to="/edit-profile" icon labelPosition="left">
           <Icon name="user" color="blue" />
           Edit Profile

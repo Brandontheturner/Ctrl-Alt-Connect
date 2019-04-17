@@ -42,6 +42,19 @@ export const getPosts = () => dispatch => {
     .catch(err => dispatch({ type: GET_POSTS, payload: null }))
 }
 
+export const getUserPosts = userId => dispatch => {
+  dispatch(clearErrors())
+  dispatch(setPostLoading())
+  db.get('/posts')
+    .then(res =>
+      dispatch({
+        type: GET_POSTS,
+        payload: res.data.filter(post => post.user === userId)
+      })
+    )
+    .catch(err => dispatch({ type: GET_POSTS, payload: null }))
+}
+
 export const deletePost = id => dispatch => {
   db.delete(`/posts/${id}`)
     .then(res => dispatch({ type: DELETE_POST, payload: id }))

@@ -2,6 +2,7 @@ import {
   CREATE_POST,
   GET_POSTS,
   GET_POST,
+  GET_USERS_POSTS,
   POST_LOADING,
   DELETE_POST
 } from '../actions/types'
@@ -22,6 +23,8 @@ export default (state = initialState, action) => {
       return { ...state, posts: action.payload, loading: false }
     case GET_POST:
       return { ...state, post: action.payload, loading: false }
+    case GET_USERS_POSTS:
+      return { ...state, posts: action.payload, loading: false }
     case DELETE_POST:
       return {
         ...state,
