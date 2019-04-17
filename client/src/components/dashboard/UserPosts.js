@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import { Segment, Item } from 'semantic-ui-react'
 import PostPreview from '../posts/PostPreview'
 import { connect } from 'react-redux'
@@ -11,7 +12,7 @@ class UserPosts extends Component {
 
   render() {
     const { posts, loading } = this.props.posts
-    return (
+    return posts.length ? (
       <Segment attached="bottom" loading={posts === null || loading}>
         <Item.Group divided>
           {posts.map(post => (
@@ -19,6 +20,16 @@ class UserPosts extends Component {
           ))}
         </Item.Group>
       </Segment>
+    ) : (
+      <Segment
+        attached="bottom"
+        content={
+          <>
+            You haven't created any posts yet. Head over to the{' '}
+            <Link to="/feed">feed</Link> and interact!
+          </>
+        }
+      />
     )
   }
 }

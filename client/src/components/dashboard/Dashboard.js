@@ -41,6 +41,9 @@ class Dashboard extends Component {
 
             <Header inverted attached="top" content="Education" />
             <Education education={profile.education} />
+
+            <Header inverted attached="top" content="My Recent Posts" />
+            <UserPosts />
           </>
         )
       } else {
@@ -56,7 +59,10 @@ class Dashboard extends Component {
               as={Link}
               to="/create-profile"
               content="Create Profile"
+              compact
             />
+            <Header inverted attached="top" content="My Recent Posts" />
+            <UserPosts />
           </>
         )
       }
@@ -67,8 +73,6 @@ class Dashboard extends Component {
         <PageHeader content="Dashboard" />
         <Segment attached="bottom" loading={profile === null || profileLoading}>
           {dashboardContent}
-          <Header inverted attached="top" content="My Recent Posts" />
-          <UserPosts />
         </Segment>
       </>
     )
